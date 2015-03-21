@@ -1,0 +1,405 @@
+[4mRunning "clean:dist" (clean) task[24m
+Cleaning .tmp...[32mOK[39m
+Cleaning dist/public...[32mOK[39m
+
+[4mRunning "concurrent:dist" (concurrent) task[24m
+    
+[4mRunning "svgmin:dist" (svgmin) task[24m
+Total saved: 0 B
+
+[32mDone, without errors.[39m
+    
+[4mRunning "imagemin:dist" (imagemin) task[24m
+✔ client/assets/images/barcode.jpg (already optimized)
+✔ client/assets/images/article-2598502-1CE2FC7100000578-486_634x540.jpg (saved 2.52 kB - 4%)
+✔ client/assets/images/images.jpg (already optimized)
+✔ client/assets/images/bg-sponsor.jpg (saved 12.14 kB - 3%)
+✔ client/assets/images/logo.png (saved 1.13 kB - 27%)
+✔ client/assets/images/yeoman.png (saved 3.71 kB - 30%)
+Minified 6 images (saved 19.49 kB)
+
+[32mDone, without errors.[39m
+
+[4mRunning "injector:scripts" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mjs[39m files [90m(18 files)[39m
+[32m>> [39mNothing changed
+
+[4mRunning "injector:css" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mcss[39m files [90m(26 files)[39m
+[32m>> [39mNothing changed
+
+[4mRunning "wiredep:target" (wiredep) task[24m
+
+[4mRunning "useminPrepare:html" (useminPrepare) task[24m
+Going through [36mclient/index.html[39m to update the config
+Looking for build script HTML comment blocks
+
+[1mConfiguration is now:[22m
+
+[1m  concat:[22m
+  { generated: 
+   { files: 
+      [ { dest: [32m'.tmp\\concat\\app\\vendor.css'[39m,
+          src: 
+           [ [32m'client\\bower_components\\bootstrap\\dist\\css\\bootstrap.css'[39m,
+             [32m'client\\bower_components\\font-awesome\\css\\font-awesome.css'[39m,
+             [32m'client\\bower_components\\OwlCarousel\\owl-carousel\\owl.carousel.css'[39m,
+             [32m'client\\bower_components\\OwlCarousel\\owl-carousel\\owl.theme.css'[39m,
+             [32m'client\\bower_components\\OwlCarousel\\owl-carousel\\owl.transitions.css'[39m ] },
+        { dest: [32m'.tmp\\concat\\app\\app.css'[39m,
+          src: 
+           [ [32m'{.tmp,client}\\app\\app.css'[39m,
+             [32m'{.tmp,client}\\app\\account\\login\\login.css'[39m,
+             [32m'{.tmp,client}\\app\\admin\\admin.css'[39m,
+             [32m'{.tmp,client}\\app\\app.css'[39m,
+             [32m'{.tmp,client}\\app\\article\\article.css'[39m,
+             [32m'{.tmp,client}\\app\\articles\\articles.css'[39m,
+             [32m'{.tmp,client}\\app\\main\\main.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\animations\\animate.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\bootstrap\\bootstrap-theme.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\bootstrap\\bootstrap-theme.min.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\bootstrap\\bootstrap.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\bootstrap\\bootstrap.min.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\carousel\\owl.carousel.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\carousel\\owl.theme.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\flexslider\\flexslider.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\flexslider\\slide_flex_style.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\flickr\\flickr.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\fonts\\icons\\font-awesome.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\fonts\\icons\\font-awesome.min.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\ie\\ie.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\nav\\megafish.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\scrollbar\\jquery.mCustomScrollbar.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\skins\\green\\green.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\skins\\theme-options.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\slide\\camera.css'[39m,
+             [32m'{.tmp,client}\\components\\css\\style.css'[39m,
+             [32m'{.tmp,client}\\components\\modal\\modal.css'[39m ] },
+        { dest: [32m'.tmp\\concat\\app\\vendor.js'[39m,
+          src: 
+           [ [32m'{client,node_modules}\\bower_components\\jquery\\dist\\jquery.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\angular\\angular.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\angular-resource\\angular-resource.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\angular-cookies\\angular-cookies.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\angular-sanitize\\angular-sanitize.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\angular-bootstrap\\ui-bootstrap-tpls.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\lodash\\dist\\lodash.compat.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\angular-socket-io\\socket.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\angular-ui-router\\release\\angular-ui-router.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\OwlCarousel\\owl-carousel\\owl.carousel.js'[39m,
+             [32m'{client,node_modules}\\bower_components\\bootstrap.growl\\bootstrap-notify.js'[39m,
+             [32m'{client,node_modules}\\socket.io-client\\socket.io.js'[39m ] },
+        { dest: [32m'.tmp\\concat\\app\\app.js'[39m,
+          src: 
+           [ [32m'{.tmp,client}\\app\\app.js'[39m,
+             [32m'{.tmp,client}\\app\\account\\account.js'[39m,
+             [32m'{.tmp,client}\\app\\account\\login\\login.controller.js'[39m,
+             [32m'{.tmp,client}\\app\\account\\settings\\settings.controller.js'[39m,
+             [32m'{.tmp,client}\\app\\account\\signup\\signup.controller.js'[39m,
+             [32m'{.tmp,client}\\app\\admin\\admin.controller.js'[39m,
+             [32m'{.tmp,client}\\app\\admin\\admin.js'[39m,
+             [32m'{.tmp,client}\\app\\article\\article.controller.js'[39m,
+             [32m'{.tmp,client}\\app\\article\\article.js'[39m,
+             [32m'{.tmp,client}\\app\\articles\\articles.controller.js'[39m,
+             [32m'{.tmp,client}\\app\\articles\\articles.js'[39m,
+             [32m'{.tmp,client}\\app\\main\\main.controller.js'[39m,
+             [32m'{.tmp,client}\\app\\main\\main.js'[39m,
+             [32m'{.tmp,client}\\components\\auth\\auth.service.js'[39m,
+             [32m'{.tmp,client}\\components\\auth\\user.service.js'[39m,
+             [32m'{.tmp,client}\\components\\modal\\modal.service.js'[39m,
+             [32m'{.tmp,client}\\components\\mongoose-error\\mongoose-error.directive.js'[39m,
+             [32m'{.tmp,client}\\components\\navbar\\navbar.controller.js'[39m,
+             [32m'{.tmp,client}\\components\\socket\\socket.service.js'[39m ] } ] } }
+
+[1m  uglify:[22m
+  { generated: 
+   { files: 
+      [ { dest: [32m'dist\\public\\app\\vendor.js'[39m,
+          src: [ [32m'.tmp\\concat\\app\\vendor.js'[39m ] },
+        { dest: [32m'dist\\public\\app\\app.js'[39m,
+          src: [ [32m'.tmp\\concat\\app\\app.js'[39m ] } ] } }
+
+[1m  cssmin:[22m
+  { generated: 
+   { files: 
+      [ { dest: [32m'dist\\public\\app\\vendor.css'[39m,
+          src: [ [32m'.tmp\\concat\\app\\vendor.css'[39m ] },
+        { dest: [32m'dist\\public\\app\\app.css'[39m,
+          src: [ [32m'.tmp\\concat\\app\\app.css'[39m ] } ] } }
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+
+[4mRunning "ngtemplates:main" (ngtemplates) task[24m
+[33mWarning: Parse Error: <div class="col-md-4 col-xs-12" <!--="" menu--=""> 
+      <ul class="social"> 
+       <li data-toggle="tooltip" title="" data-original-title="Facebook"> <a href="#" target="_blank"><i class="fa fa-facebook"></i></a> </li> 
+       <li data-toggle="tooltip" title="" data-original-title="Twitter"> <a href="#" target="_blank"><i class="fa fa-twitter"></i></a> </li> 
+       <li data-toggle="tooltip" title="" data-original-title="Youtube"> <a href="#" target="_blank"><i class="fa fa-youtube"></i></a> </li> 
+      </ul> 
+      <!-- End Menu--> 
+     </div> 
+     <!-- End Social--> 
+    </div> 
+   </div> 
+  </footer>
+
+<div ng-include="'components/navbar/navbar.html'"></div> 
+  <section class="paddings pattern-important-info important-info"> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-md-9 col-xs-12"> 
+      <h1><span><span style="color:green">N</span>epco</span><span style="color:green">.</span> is incredibly beautiful comparative articles platform</h1> 
+      <p class="lead">"We bring a personal and effective approach to every brand we work with, which is why our clients love us and why they keep coming back.”</p> 
+      <a class="btn btn-lg animated bounceInUp delay1" href="#">View More</a> 
+     </div> 
+     <div class="col-md-3 col-xs-12"> 
+      <img src="assets/images/logo.png" alt="" style="width:200px;margin:auto"> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+  <section class="box-action"> 
+   <div class="container"> 
+    <div class="title"> 
+     <p class="lead">Discover an app to know which article you should better buy !</p> 
+    </div> 
+    <div class="button  animated bounceInUp delay1"> 
+     <a href="https://play.google.com/store" target="_blank"><span class="fa fa-download "></span> Download</a> 
+     <span class="arrow_box_action"></span> 
+    </div> 
+   </div> 
+  </section> 
+  <section class="sponsors"> 
+   <div class="overflow-sponsors"> 
+    <div class="container paddings"> 
+     <h2>We have earned the trust of <span>25</span>brands, including these fine companies</h2> 
+     <!-- Sponsors --> 
+     <ul id="sponsors" class="owl-carousel owl-theme" style=" display: block;"> 
+      <!-- Sponsor --> 
+      <div class="owl-wrapper-outer"> 
+       <div class="owl-wrapper" style="padding-left:auto;padding-right:auto;display: block;"> 
+        <div class="owl-item" style="width: 195px;"> 
+         <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover"> <a href="#"><img src="assets/sponsors/logos/ralphlauren.png" alt=""></a> </li> 
+        </div> 
+        <div class="owl-item" style="width: 195px;"> 
+         <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover"> <a href="#"><img src="assets/sponsors/logos/Gucci.png" alt=""></a> </li> 
+        </div> 
+        <div class="owl-item" style="width: 195px;"> 
+         <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover"> <a href="#"><img src="assets/sponsors/logos/prada.png" alt=""></a> </li> 
+        </div> 
+        <div class="owl-item" style="width: 195px;"> 
+         <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover"> <a href="#"><img src="assets/sponsors/logos/Valentino.png" alt=""></a> </li> 
+        </div> 
+       </div> 
+      </div> 
+     </ul> 
+     <!-- End Sponsors --> 
+     <div class="circle"> 
+      <i class="fa fa-thumbs-up"></i> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+  <section class="paddings borders section-gray pattern-portfolios"> 
+   <!-- Title Heading --> 
+   <h2 class="text-center">Recent articles</h2> 
+   <!-- End Title Heading --> 
+   <!-- Items Works --> 
+   <ul id="works" class="works padding-top-mini owl-carousel owl-theme" style="opacity: 1; display: block;"> 
+    <!-- Item Work --> 
+    <div class="owl-wrapper-outer"> 
+     <div class="owl-wrapper" style="width: 6144px; left: 50px; display: block;"> 
+      <div class="owl-item" ng-repeat="article in articles"> 
+       <li class="item-work"> 
+        <div class="hover"> 
+         <img ng-src="assets/EAN/{{article.EAN13}}.PNG" alt="Image" class="img-responsive" style="margin:auto"> 
+         <a href="/article/6538965439874" class="fancybox" title="Image"> 
+          <div class="overlay"></div> </a> 
+        </div> 
+        <div class="info-work hover"> 
+         <h4>{{article.name}}</h4> 
+         <p>{{article.ean13}}</p> 
+         <div class="icons-work"> 
+          <span class="fa fa-star"></span> 
+          <span class="fa fa-star"></span> 
+          <span class="fa fa-star"></span> 
+          <span class="fa fa-star"></span> 
+          <span class="fa fa-star-o"></span> 
+         </div> 
+        </div> </li> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="owl-controls clickable"> 
+     <div class="owl-pagination"> 
+      <div class="owl-page active">
+       <span class=""></span>
+      </div> 
+      <div class="owl-page">
+       <span class=""></span>
+      </div> 
+     </div> 
+     <div class="owl-buttons"> 
+      <div class="owl-prev">
+       <i class="fa fa-angle-left"></i>
+      </div> 
+      <div class="owl-next">
+       <i class="fa fa-angle-right"></i>
+      </div> 
+     </div> 
+    </div> 
+   </ul> 
+   <!-- End Items Works --> 
+  </section> 
+  <footer class="footer-top"> 
+   <div class="container"> 
+    <div class="row"> 
+     <div class="col-md-3 col-xs-6 "> 
+      <h3>01-55-23-36-99 </h3> 
+     </div> 
+     <div class="col-md-3 col-xs-6 "> 
+      <h3><a href="#">Support</a> - <a href="#">Sales</a></h3> 
+     </div> 
+     <div class="col-md-3 col-xs-6 "> 
+      <h3><a href="mailto:sales@nepco.fr" target="_blank">sales@nepco.fr</a></h3> 
+     </div> 
+     <div class="col-md-3 col-xs-6 "> 
+      <h3>24x7x365</h3> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <footer class="footer-center"> 
+   <div class="container"> 
+    <div class="row top"> 
+     <div class="col-md-3  col-xs-6 item-center"> 
+      <span class="arrow_footer"></span> 
+      <i class="fa fa-phone"></i> 
+      <h4>Talk to u</h4> 
+     </div> 
+     <div class="col-md-3 col-xs-6  item-center"> 
+      <span class="arrow_footer"></span> 
+      <i class="fa fa-comment"></i> 
+      <h4>Live Chat</h4> 
+     </div> 
+     <div class="col-md-3 col-xs-6  item-center"> 
+      <span class="arrow_footer"></span> 
+      <i class="fa fa-envelope"></i> 
+      <h4>Email Us</h4> 
+     </div> 
+     <div class="col-md-3 col-xs-6  item-center"> 
+      <span class="arrow_footer"></span> 
+      <i class="fa fa-thumbs-up"></i> 
+      <h4>Good Support</h4> 
+     </div> 
+    </div> 
+    <div class="row"> 
+     <div class="col-md-4 col-xs-6 "> 
+      <div class="border-right"> 
+       <i class="fa fa-twitter"></i> 
+       <h4>Latest Tweet</h4> 
+       <div class="twitter"> 
+        <p class="loading">Loading tweets...</p> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="col-md-3 col-xs-6 "> 
+      <div class="border-right"> 
+       <h4>Newsletter</h4> 
+       <p>Enter your e-mail and subscribe to our newsletter.</p> 
+       <form id="newsletterForm" action="php/mailchip/newsletter-subscribe.php"> 
+        <div class="input-group"> 
+         <span class="input-group-addon"> <i class="fa fa-envelope"></i> </span> 
+         <input class="form-control" placeholder="Email Address" name="email" type="email" required> 
+         <span class="input-group-btn"> <button class="btn btn-primary" type="submit" name="subscribe">Go!</button> </span> 
+        </div> 
+       </form> 
+       <div id="result-newsletter"></div> 
+      </div> 
+     </div> 
+     <div class="col-md-2 col-xs-6 "> 
+      <div class="border-right"> 
+       <h4>Recent Links</h4> 
+       <ul class="links"> 
+        <li><i class="fa fa-check"></i> <a href="#">Work</a></li> 
+        <li><i class="fa fa-check"></i> <a href="#">About Us</a></li> 
+        <li><i class="fa fa-check"></i> <a href="#">Services</a></li> 
+        <li><i class="fa fa-check"></i> <a href="#">Contact</a></li> 
+       </ul> 
+      </div> 
+     </div> 
+     <div class="col-md-3 col-xs-6"> 
+      <h4>Recent flickr</h4> 
+      <ul id="flickr" class="thumbs"> 
+       <li> <a href="http://farm8.staticflickr.com/7629/16754324416_13308137a6_b.jpg" class="fancybox"><img src="http://farm8.staticflickr.com/7629/16754324416_13308137a6_s.jpg" alt="Rain"></a> </li> 
+       <li> <a href="http://farm9.staticflickr.com/8737/16585112659_ce88629a15_b.jpg" class="fancybox"><img src="http://farm9.staticflickr.com/8737/16585112659_ce88629a15_s.jpg" alt="Travel"></a> </li> 
+       <li> <a href="http://farm9.staticflickr.com/8603/16524319597_2411873750_b.jpg" class="fancybox"><img src="http://farm9.staticflickr.com/8603/16524319597_2411873750_s.jpg" alt="Ocean"></a> </li> 
+       <li> <a href="http://farm9.staticflickr.com/8576/16471430998_43a594a152_b.jpg" class="fancybox"><img src="http://farm9.staticflickr.com/8576/16471430998_43a594a152_s.jpg" alt="People"></a> </li> 
+       <li> <a href="http://farm9.staticflickr.com/8600/16410439887_7b4565891d_b.jpg" class="fancybox"><img src="http://farm9.staticflickr.com/8600/16410439887_7b4565891d_s.jpg" alt="Ocean"></a> </li> 
+       <li> <a href="http://farm8.staticflickr.com/7357/15832888654_a1e63c45b0_b.jpg" class="fancybox"><img src="http://farm8.staticflickr.com/7357/15832888654_a1e63c45b0_s.jpg" alt="People"></a> </li> 
+       <li> <a href="http://farm8.staticflickr.com/7319/16230433827_6d0f4a991a_b.jpg" class="fancybox"><img src="http://farm8.staticflickr.com/7319/16230433827_6d0f4a991a_s.jpg" alt="Sea"></a> </li> 
+       <li> <a href="http://farm8.staticflickr.com/7334/16397530771_ecac597e78_b.jpg" class="fancybox"><img src="http://farm8.staticflickr.com/7334/16397530771_ecac597e78_s.jpg" alt="People"></a> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </footer> 
+  <footer class="footer-bottom"> 
+   <div class="container"> 
+    <div class="row"> 
+     <!-- Nav--> 
+     <div class="col-md-8 col-xs-12"> 
+      <div class="logo-footer"> 
+       <h2><span>N</span>epco<span>.</span></h2> 
+      </div> 
+      <!-- Menu--> 
+      <ul class="menu-footer"> 
+       <li><a href="index.html">HOME</a> </li> 
+       <li><a href="about.html">ABOUT</a></li> 
+       <li><a href="services.html">SERVICES</a></li> 
+       <li><a href="portfolio.html">PORTFOLIO</a></li> 
+       <li><a href="blog.html">BLOG</a></li> 
+       <li><a href="contact.html">CONTACT</a></li> 
+      </ul> 
+      <!-- End Menu--> 
+      <!-- coopring--> 
+      <div class="row coopring"> 
+       <div class="col-md-8 col-xs-12"> 
+        <p>© 2015 Nepco . All Rights Reserved. 2015</p> 
+       </div> 
+      </div> 
+      <!-- End coopring--> 
+     </div> 
+     <!-- End Nav--> 
+     <!-- Social--> 
+     <div class="col-md-4 col-xs-12" <!--="" menu--=""> 
+      <ul class="social"> 
+       <li data-toggle="tooltip" title="" data-original-title="Facebook"> <a href="#" target="_blank"><i class="fa fa-facebook"></i></a> </li> 
+       <li data-toggle="tooltip" title="" data-original-title="Twitter"> <a href="#" target="_blank"><i class="fa fa-twitter"></i></a> </li> 
+       <li data-toggle="tooltip" title="" data-original-title="Youtube"> <a href="#" target="_blank"><i class="fa fa-youtube"></i></a> </li> 
+      </ul> 
+      <!-- End Menu--> 
+     </div> 
+     <!-- End Social--> 
+    </div> 
+   </div> 
+  </footer>
+
+ Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m
+
+
+Execution Time (2015-03-15 23:19:01 UTC)
+loading tasks        63ms  ■■ 4%
+clean:dist           31ms  ■ 2%
+concurrent:dist     731ms  ■■■■■■■■■■■■■■■■■■ 42%
+injector:scripts     31ms  ■ 2%
+wiredep:target      219ms  ■■■■■■ 13%
+useminPrepare:html  125ms  ■■■■ 7%
+autoprefixer:dist    31ms  ■ 2%
+ngtemplates:main    485ms  ■■■■■■■■■■■■ 28%
+Total 1.7s
+

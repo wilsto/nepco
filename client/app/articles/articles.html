@@ -1,0 +1,29 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+          <div class="pull-right" style="margin-right:50px">
+            <a class="btn btn-success" href="/article/">Create a new article</a>
+          </div>
+<div class="container">
+  <p>Top-rated articles</p>
+
+
+<div class="owl-item" style="width: 184px;  border: solid 1px #cdcdcd;" ng-repeat="article in articles">
+    <li class="item-work">
+       <div class="hover">
+            <img src="assets/EAN/6538965439874.PNG" alt="Image" class="img-responsive" style="margin:auto">                               
+             <a href="/article/6538965439874" class="fancybox" title="Image"><div class="overlay"></div></a>
+        </div>                                   
+        <div class="info-work hover">
+            <h4>{{article.name}}</h4>
+            <p>{{article.ean13}}</p>
+            <div class="icons-work">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star-o"></span>
+            </div>
+        </div>  
+    </li>
+</div>
+
+</div>

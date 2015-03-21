@@ -1,0 +1,154 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="row">
+    <div class="col-md-12">
+
+        <tabset>
+
+            <tab active="true">
+                <tab-heading>
+                    Description
+                </tab-heading>
+                <div class="row">
+                    <div class="col-md-2">
+
+                        <img ng-src="assets/EAN/{{article.EAN13}}.PNG" alt="Image" class="img-responsive" style="margin:auto">
+                    </div>
+                    <div class="col-md-10">
+
+                        {{article.name}}
+                    </div>
+                </div>
+            </tab>
+            <tab>
+                <tab-heading>
+                    Edit
+                </tab-heading>
+                <form name="form.myForm" class="form-horizontal" role="form" action="#">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.name" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">EAN 13</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.EAN13" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Department</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.department" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Collection</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.collectionType" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Brand</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.brand" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Brand Article Link</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="http://" class="form-control" ng-model="article.brandLink" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Denomination</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.denomination" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.description" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Category</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.category" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Seller</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.seller" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">color</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.color" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">lot</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.lot" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">startDate</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.startDate" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">endDate</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.endDate" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">price</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.price" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">materials</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.materials" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">presence</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.presence" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">nepcodeRef</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.nepcodeRef" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">tests</label>
+                            <div class="col-md-9">
+                                <input type="text" placeholder="" class="form-control" ng-model="article.tests" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="">
+                            <a href="#" class="btn btn-success pull-right" ng-click="save()">Save Changes</a>
+                            <a href="#" class="btn btn-default" ng-click="reset()">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </tab>
+        </tabset>
+
+    </div>
+</div>
