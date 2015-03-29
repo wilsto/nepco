@@ -51,6 +51,9 @@ exports.update = function(req, res) {
             return res.send(404);
         }
         var updated = _.merge(article, req.body);
+        updated.markModified('materials');
+        updated.markModified('presence');
+        updated.markModified('tests');
         updated.save(function(err) {
             if (err) {
                 return handleError(res, err);

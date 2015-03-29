@@ -8,7 +8,7 @@
                 <a class="btn btn-lg animated bounceInUp delay1" href="#">View More</a>
             </div>
             <div class="col-md-3 col-xs-12">
-                <img src="assets/images/logo.png" alt="" style="width:200px;margin:auto">
+                <img src="assets/images/logo/logo_nepco.png" alt="" style="width:200px;margin:auto">
             </div>
         </div>
     </div>
@@ -39,22 +39,22 @@
                     <div class="owl-wrapper" style="padding-left:auto;padding-right:auto;display: block;">
                         <div class="owl-item" style="width: 195px;">
                             <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover">
-                                <a href="#"><img src="assets/sponsors/logos/ralphlauren.png" alt=""></a>
+                                <a href="#"><img src="assets/images/ralphlauren.png" alt=""></a>
                             </li>
                         </div>
                         <div class="owl-item" style="width: 195px;">
                             <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover">
-                                <a href="#"><img src="assets/sponsors/logos/Gucci.png" alt=""></a>
+                                <a href="#"><img src="assets/images/Gucci.png" alt=""></a>
                             </li>
                         </div>
                         <div class="owl-item" style="width: 195px;">
                             <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover">
-                                <a href="#"><img src="assets/sponsors/logos/prada.png" alt=""></a>
+                                <a href="#"><img src="assets/images/prada.png" alt=""></a>
                             </li>
                         </div>
                         <div class="owl-item" style="width: 195px;">
                             <li data-toggle="tooltip" title="" data-original-title="Tooltip Hover">
-                                <a href="#"><img src="assets/sponsors/logos/Valentino.png" alt=""></a>
+                                <a href="#"><img src="assets/images/Valentino.png" alt=""></a>
                             </li>
                         </div>
                     </div>
@@ -82,17 +82,17 @@
         <!-- Item Work -->
         <div class="owl-wrapper-outer">
             <div class="owl-wrapper" style="width: 6144px; left: 50px; display: block;">
-                <div class="owl-item" ng-repeat="article in articles">
-                    <li class="item-work">
-                        <div class="hover">
-                            <img ng-src="assets/EAN/{{article.EAN13}}.PNG" alt="Image" class="img-responsive" style="margin:auto">
-                            <a href="/article/6538965439874" class="fancybox" title="Image">
-                                <div class="overlay"></div>
-                            </a>
-                        </div>
-                        <div class="info-work hover">
-                            <h4>{{article.name}}</h4>
-                            <p>{{article.ean13}}</p>
+<div class="owl-item" ng-repeat="article in articles">
+            <div class="thumbnail">
+                <img class="group list-group-image" ng-src="{{article.photoLink}}" alt="" style="width:75px"/>
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        {{article.name}}</h4>
+                        <p class="group inner list-group-item-text" style="padding-bottom:15px;">
+                            {{article.description}}
+                        </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-7">
                             <div class="icons-work">
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
@@ -101,8 +101,13 @@
                                 <span class="fa fa-star-o"></span>
                             </div>
                         </div>
-                    </li>
+                        <div class="col-xs-12 col-md-5">
+                            <a class="btn btn-success" href="/article/{{article.EAN13}}">View details</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
             </div>
         </div>
 

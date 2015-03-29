@@ -18,6 +18,10 @@
       <link rel="stylesheet" href="bower_components/OwlCarousel/owl-carousel/owl.carousel.css" />
       <link rel="stylesheet" href="bower_components/OwlCarousel/owl-carousel/owl.theme.css" />
       <link rel="stylesheet" href="bower_components/OwlCarousel/owl-carousel/owl.transitions.css" />
+      <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+      <link rel="stylesheet" href="bower_components/pick-a-color/build/1.2.0/css/pick-a-color-1.2.0.min.css" />
+      <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+      <link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -27,6 +31,7 @@
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/article/article.css">
+      <link rel="stylesheet" href="app/articleedit/articleedit.css">
       <link rel="stylesheet" href="app/articles/articles.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="components/css/animations/animate.css">
@@ -79,6 +84,7 @@
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -88,6 +94,21 @@
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
       <script src="bower_components/OwlCarousel/owl-carousel/owl.carousel.js"></script>
       <script src="bower_components/bootstrap.growl/bootstrap-notify.js"></script>
+      <script src="bower_components/angular-barcode-generator/jquery-ean13.js"></script>
+      <script src="bower_components/angular-ui-select/dist/select.js"></script>
+      <script src="bower_components/bootstrap-confirmation2/bootstrap-confirmation.js"></script>
+      <script src="bower_components/tinycolor/tinycolor.js"></script>
+      <script src="bower_components/pick-a-color/build/1.2.2/js/pick-a-color-1.2.2.min.js"></script>
+      <script src="bower_components/angular-pick-a-color/src/angular-pick-a-color.js"></script>
+      <script src="bower_components/ntc.js/ntc.js"></script>
+      <script src="bower_components/moment/moment.js"></script>
+      <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+      <script src="bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+      <script src="bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+      <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+      <script src="bower_components/highcharts/highcharts.js"></script>
+      <script src="bower_components/highcharts/highcharts-more.js"></script>
+      <script src="bower_components/highcharts/modules/exporting.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -103,10 +124,13 @@
           <script src="app/admin/admin.js"></script>
           <script src="app/article/article.controller.js"></script>
           <script src="app/article/article.js"></script>
+          <script src="app/articleedit/articleedit.controller.js"></script>
+          <script src="app/articleedit/articleedit.js"></script>
           <script src="app/articles/articles.controller.js"></script>
           <script src="app/articles/articles.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/myFilters/myFilters.filter.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modal/modal.service.js"></script>

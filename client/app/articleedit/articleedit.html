@@ -1,0 +1,247 @@
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">List Modification : {{listName}}</h3>
+        </div>
+        <div class="modal-body">
+ <div class="pull-right">
+            <button type='button' class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">        Previous    </button>
+            {{currentPage+1}}/{{numberOfPages()}}
+            <button type='button' class="btn btn-default"  ng-disabled="currentPage >= items.length/pageSize - 1" ng-click="currentPage=currentPage+1">        Next    </button>
+               </div>
+            <ul>
+                <li ng-repeat="item in items | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+  <a data-toggle="confirmation" data-singleton="true"><i class="btn fa fa-trash-o" ng-click="delete($index)"></i></a> {{ item }}                </li>
+            </ul>
+        </div>
+       <div class="modal-body">
+            New: <input type="text" class="form-control" ng-model="newItem" style="width:75%;display:inline-block">
+            <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
+        </div>
+        <div class="modal-footer">
+            <button type='button' class="btn btn-warning pull-left"  ng-click="cancel()">Cancel</button>
+            <button  type='button' class="btn btn-primary" ng-click="ok()">Close and Save</button>
+        </div>
+    </script>
+<div ng-include="'components/navbar/navbar.html'">
+</div>
+<div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        <form name="form.myForm" class="form-horizontal" role="form" action="#">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Name</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Photo</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.photoLink" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">EAN 13</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.EAN13" ng-required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Department</label>
+                    <div class="col-md-9">
+                        <ui-select ng-model="article.department" theme="bootstrap" ng-disabled="disabled" reset-search-input="true" style="width: 75%;display: inline-block;">
+                            <ui-select-match placeholder="Enter an department...">{{article.department}}</ui-select-match>
+                            <ui-select-choices repeat="department in departments  | filter: $select.search track by $index" refresh="refresh($select.search, 'Department')" refresh-delay="0">
+                                <div ng-bind-html="department | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <button type='button' class="btn btn-default" ng-click="open(departments, 'Department')">Modify List</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Collection</label>
+                    <div class="col-md-9">
+                        <ui-select ng-model="article.collectionType" theme="bootstrap" ng-disabled="disabled" reset-search-input="true" style="width: 75%;display: inline-block;">
+                            <ui-select-match placeholder="Enter an collection...">{{article.collectionType}}</ui-select-match>
+                            <ui-select-choices repeat="collectionType in collectionTypes  | filter: $select.search track by $index" refresh="refresh($select.search, 'collectionType')" refresh-delay="0">
+                                <div ng-bind-html="collectionType | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <button type='button' class="btn btn-default" ng-click="open(collectionTypes, 'collectionType')">Modify List</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Brand</label>
+                    <div class="col-md-9">
+                        <ui-select ng-model="article.brand" theme="bootstrap" ng-disabled="disabled" reset-search-input="true" style="width: 75%;display: inline-block;">
+                            <ui-select-match placeholder="Enter a brand...">{{article.brand}}</ui-select-match>
+                            <ui-select-choices repeat="brand in brands  | filter: $select.search track by $index" refresh="refresh($select.search, 'brand')" refresh-delay="0">
+                                <div ng-bind-html="brand | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <button type='button' class="btn btn-default" ng-click="open(brands, 'brand')">Modify List</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Brand Article Link</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="http://" class="form-control" ng-model="article.brandLink" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Denomination</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.denomination" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Description</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.description" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Category</label>
+                    <div class="col-md-9">
+                        <ui-select ng-model="article.category" theme="bootstrap" ng-disabled="disabled" reset-search-input="true" style="width: 75%;display: inline-block;">
+                            <ui-select-match placeholder="Enter a category...">{{article.category}}</ui-select-match>
+                            <ui-select-choices repeat="category in categorys  | filter: $select.search track by $index" refresh="refresh($select.search, 'category')" refresh-delay="0">
+                                <div ng-bind-html="category | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <button type='button' class="btn btn-default" ng-click="open(categorys, 'category')">Modify List</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Seller reference</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.seller" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">color</label>
+                    <div class="col-md-6">
+                        <pick-a-color id="inputColor" ng-model="article.color" inline-dropdown="true" style="width: 75%;display: inline-block;"></pick-a-color>
+                    </div>
+                    <small class="col-md-3 text-muted">{{article.colorName}}</small>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">lot</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.lot" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">startDate</label>
+                    <div class="col-md-9">
+                        <div class="dropdown">
+                              <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                <div class="input-group"><input type="text" class="form-control" data-ng-model="article.startDate"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                              </a>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="article.startDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown1',startView:'day', minView:'day' }"/>
+                              </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">endDate</label>
+                    <div class="col-md-9">
+                        <div class="dropdown">
+                              <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                <div class="input-group"><input type="text" class="form-control" data-ng-model="article.endDate"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                              </a>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <datetimepicker data-ng-model="article.endDate" data-datetimepicker-config="{ dropdownSelector: '#dropdown2',startView:'day', minView:'day' }"/>
+                              </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">price</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.price" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">materials</label>
+                    <div class="col-md-9">
+                      <ui-select multiple ng-model="article.materials" theme="bootstrap" ng-disabled="disabled" style="width: 75%;display: inline-block;">
+                        <ui-select-match placeholder="Select materials...">{{$item}}</ui-select-match>
+                        <ui-select-choices repeat="material in materialss | filter:$select.search track by $index" refresh="refresh($select.search, 'materials')" refresh-delay="0">
+                          {{material}}
+                        </ui-select-choices>
+                      </ui-select>
+                        <button type='button' class="btn btn-default" ng-click="open(materialss, 'materials')">Modify List</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">presence</label>
+                    <div class="col-md-9">
+                        <ui-select multiple ng-model="article.presence" theme="bootstrap" ng-disabled="disabled" style="width: 75%;display: inline-block;">
+                        <ui-select-match placeholder="Select presence...">{{$item}}</ui-select-match>
+                        <ui-select-choices repeat="presence in presences | filter:$select.search track by $index" refresh="refresh($select.search, 'presence')" refresh-delay="0">
+                          {{presence}}
+                        </ui-select-choices>
+                      </ui-select>
+                        <button type='button' class="btn btn-default" ng-click="open(presences, 'presence')">Modify List</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">nepcodeRef</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.nepcodeRef" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Test1</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Test Name" class="form-control" ng-model="article.test1" style="width: 30%;display: inline-block;" />
+                        <input type="text" placeholder="Test Result" class="form-control" ng-model="article.test1Result"  style="width: 30%;display: inline-block;"/>
+                        <input type="text" placeholder="NepCode Rank (/5)" class="form-control" ng-model="article.test1Rank" style="width: 30%;display: inline-block;" />
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <label class="col-md-3 control-label">Test2</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Test Name" class="form-control" ng-model="article.test2" style="width: 30%;display: inline-block;" />
+                        <input type="text" placeholder="Test Result" class="form-control" ng-model="article.test2Result"  style="width: 30%;display: inline-block;"/>
+                        <input type="text" placeholder="NepCode Rank (/5)" class="form-control" ng-model="article.test2Rank" style="width: 30%;display: inline-block;" />
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <label class="col-md-3 control-label">Test3</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Test Name" class="form-control" ng-model="article.test3" style="width: 30%;display: inline-block;" />
+                        <input type="text" placeholder="Test Result" class="form-control" ng-model="article.test3Result"  style="width: 30%;display: inline-block;"/>
+                        <input type="text" placeholder="NepCode Rank (/5)" class="form-control" ng-model="article.test3Rank" style="width: 30%;display: inline-block;" />
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <label class="col-md-3 control-label">Test4</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Test Name" class="form-control" ng-model="article.test4" style="width: 30%;display: inline-block;" />
+                        <input type="text" placeholder="Test Result" class="form-control" ng-model="article.test4Result"  style="width: 30%;display: inline-block;"/>
+                        <input type="text" placeholder="NepCode Rank (/5)" class="form-control" ng-model="article.test4Rank" style="width: 30%;display: inline-block;" />
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <label class="col-md-3 control-label">Test5</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="Test Name" class="form-control" ng-model="article.test5" style="width: 30%;display: inline-block;" />
+                        <input type="text" placeholder="Test Result" class="form-control" ng-model="article.test5Result"  style="width: 30%;display: inline-block;"/>
+                        <input type="text" placeholder="NepCode Rank (/5)" class="form-control" ng-model="article.test5Rank" style="width: 30%;display: inline-block;" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="">
+                    <a href="#" class="btn btn-success pull-right" ng-click="save()">Save Changes</a>
+                    <a href="#" class="btn btn-default" ng-click="reset()">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
