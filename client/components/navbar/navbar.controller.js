@@ -15,8 +15,14 @@ angular.module('nepcoApp')
             'title': 'Partenaires',
             'link': '/partenaires'
         }, {
+            'title': 'Tests',
+            'link': '/tests'
+        }, {
             'title': 'Blog',
             'link': '/blog'
+        }, {
+            'title': 'Bons plans',
+            'link': '/bons-plans'
         }];
 
         $scope.isCollapsed = true;
