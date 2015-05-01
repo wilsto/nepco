@@ -2,9 +2,12 @@
 
 angular.module('nepcoApp')
     .controller('ArticleeditCtrl', function($scope, $http, $stateParams, $location, $modal, $log) {
+
         $scope.article = {};
         $scope.article.materials = [];
         $scope.article.presence = [];
+
+
         $scope.load = function() {
             if ($stateParams.id) {
 

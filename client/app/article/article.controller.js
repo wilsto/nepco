@@ -3,12 +3,17 @@
 angular.module('nepcoApp')
     .controller('ArticleCtrl', function($scope, $http, $stateParams, $location) {
 
+        $scope.article = {};
+        $scope.article.name = '';
+        $scope.article.materials = [];
+        $scope.article.presence = [];
+        $scope.materialss = [];
+        $scope.presences = [];
+
         $scope.load = function() {
             if ($stateParams.id) {
                 $http.get('/api/articles/' + $stateParams.id).success(function(article) {
-                    console.log('article', article);
                     $scope.article = article[0];
-
                     $scope.chartPolar = {
                         options: {
                             chart: {
@@ -49,6 +54,9 @@ angular.module('nepcoApp')
                             layout: 'vertical'
                         },
 
+                        credits: {
+                            enabled: false
+                        },
                         series: [{
                             name: 'NepCode Rank',
                             data: [parseInt($scope.article.test1Rank), parseInt($scope.article.test2Rank), parseInt($scope.article.test3Rank), parseInt($scope.article.test4Rank), parseInt($scope.article.test5Rank)],
@@ -58,15 +66,49 @@ angular.module('nepcoApp')
                     };
 
 
-                    setTimeout(function() {
-                        $("#ean").EAN13(article[0].EAN13);
-                    }, 0);
-                });
-            } else {
-                $scope.article = {
-                    name: ''
-                };
+                    $scope.chartBar = {
 
+                        options: {
+                            //This is the Main Highcharts chart config. Any Highchart options are valid here.
+                            //will be overriden by values specified below.
+                            chart: {
+                                type: 'bar'
+                            },
+                            tooltip: {
+                                style: {
+                                    padding: 10,
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        credits: {
+                            enabled: false
+                        },
+                        //The below properties are watched separately for changes.
+
+                        //Series object (optional) - a list of series using normal highcharts series options.
+                        series: [{
+                            data: [0, 0, 5, 25, 10]
+                        }],
+                        //Title configuration (optional)
+                        title: {
+                            text: 'Taille',
+                            align: 'left'
+                        },
+                        subtitle: {
+                            text: 'Les Kippmeyers ayant cet article trouvent qu’il taille :',
+                            align: 'left'
+                        },
+                        //Boolean to control showng loading status on chart (optional)
+                        //Could be a string if you want to show specific loading text.
+                        loading: false,
+                        //Configuration for the xAxis (optional). Currently only one x axis can be dynamically controlled.
+                        //properties currentMin and currentMax provied 2-way binding to the chart's maximimum and minimum
+                        xAxis: {
+                            categories: ['Très petit', 'Petit', 'Normalement', 'Grand', 'Très grand']
+                        }
+                    };
+                });
             }
         };
         $scope.load();
