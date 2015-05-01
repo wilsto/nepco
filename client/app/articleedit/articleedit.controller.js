@@ -27,23 +27,20 @@ angular.module('nepcoApp')
         $scope.save = function() {
             if (typeof $scope.article._id === 'undefined') {
                 $http.post('/api/articles', $scope.article).success(function(data) {
-                    var logInfo = 'Article "' + $scope.article.name + '" was created';
-                    $.growl({
-                        icon: 'fa fa-info-circle',
-                        message: logInfo
-                    });
-                    $location.path('/article/' + data._id);
-
+                    $location.path('/article/' + data.EAN13);
                 });
             } else {
-                console.log('$scope.article', $scope.article);
-                $http.put('/api/articles/' + $scope.article._id, $scope.article).success(function() {
-                    var logInfo = 'Article "' + $scope.article.name + '" was updated';
-                    $.growl({
-                        icon: 'fa fa-info-circle',
-                        message: logInfo
-                    });
+                $http.put('/api/articles/' + $scope.article._id, $scope.article).success(function(data) {
+                    $location.path('/article/' + data.EAN13);
                 });
+            }
+        };
+
+        $scope.cancel = function() {
+            if (typeof $scope.article._id === 'undefined') {
+                $location.path('/articles');
+            } else {
+                $location.path('/article/' + $scope.article.EAN13);
             }
         };
 

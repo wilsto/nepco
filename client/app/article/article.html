@@ -14,7 +14,7 @@
         <h3 style="padding:0">{{article.name}} <span class="text-primary"> {{article.price}}€</span> </h3>
         <hr>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-12">
                 <ul class="polaroids">
                     <li><img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive" style="margin:auto"></li>
                 </ul>
@@ -27,48 +27,28 @@
                 <small>
                         Cet encart permet de mettre en avant un point de qualité non pris en compte dans le cahier des charges KIPPME mais important au regard de l’information client. Le texte est rédigé ou validé par KIPPME.com
                         </small>
-
-                                                    <small class="text-muted pull-right" style="padding-top:25px">Commercials</small>
-                <a ng-href="{{article.brandLink}}" target="_blank">
-                    <div class="pull-right" style="padding:25px;text-align:center;border:1px lightgrey solid">
-                        <span class="text-info">Mettre ici des liens sponsorisés payés au clic</span>
-                        <i class="fa fa-external-link"></i>
-
+                    <div style="margin-top:25px;margin-bottom:25px;text-align:center;">
+                        <a href="#description"><i class="fa  fa-envelope"></i> Nous contacter au sujet de la qualité de cet article</a>
                     </div>
-                </a>
+                                                    
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 col-xs-12">
 
 
                 <div style="padding-top:20px">
                     <highchart id="chart1" config="chartPolar"></highchart>
                 </div>
-                <div style="padding-top:10px">
-                    Matériels :
-                    <ui-select multiple ng-model="article.materials" theme="bootstrap" disabled="true" style="width: 75%;display: inline-block;background:none;border:none">
-                        <ui-select-match placeholder="Select materials...">{{$item}}</ui-select-match>
-                        <ui-select-choices repeat="material in materials | filter:$select.search track by $index" refresh="refresh($select.search, 'materials')" refresh-delay="0">
-                            {{material}}
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-                <div style="padding-top:10px">
-                    Présence :
-                    <ui-select multiple ng-model="article.presence" theme="bootstrap" disabled="true" style="width: 75%;display: inline-block;background:none;border:none">
-                        <ui-select-match placeholder="Select presence...">{{$item}}</ui-select-match>
-                        <ui-select-choices repeat="presenc in presence | filter:$select.search2 track by $index" refresh="refresh($select.search2, 'presence')" refresh-delay="0">
-                            {{presenc}}
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
+
                 <div id="clients" style="padding-top:20px">
                     <highchart id="chart2" config="chartBar"></highchart>
                 </div>
-
+                    <div style="margin-top:25px;margin-bottom:25px;text-align:center;">
+                        <a href="#description"><i class="fa  fa-comment-o"></i> J'ai cet article et je souhaite partager mon avis</a>
+                    </div>
 
 
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-xs-12">
                 <div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
                     <ul class="nav bs-docs-sidenav">
                         <li style="padding-bottom:25px">
