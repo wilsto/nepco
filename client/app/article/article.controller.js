@@ -19,6 +19,12 @@ angular.module('nepcoApp')
                             chart: {
                                 polar: true,
                                 type: 'area'
+                            },
+
+                            navigation: {
+                                buttonOptions: {
+                                    enabled: false
+                                }
                             }
                         },
 
@@ -79,6 +85,39 @@ angular.module('nepcoApp')
                                     padding: 10,
                                     fontWeight: 'bold'
                                 }
+                            },
+                            //Title configuration (optional)
+                            title: {
+                                text: 'Taille',
+                                align: 'left'
+                            },
+                            plotOptions: {
+                                bar: {
+                                    dataLabels: {
+                                        enabled: true
+                                    }
+                                }
+                            },
+                            subtitle: {
+                                text: 'Les Kippmeyers ayant cet article trouvent qu’il taille :',
+                                align: 'left'
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'top',
+                                x: -40,
+                                y: 100,
+                                floating: true,
+                                borderWidth: 1,
+                                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                                shadow: true
+                            },
+
+                            navigation: {
+                                buttonOptions: {
+                                    enabled: false
+                                }
                             }
                         },
                         credits: {
@@ -90,15 +129,6 @@ angular.module('nepcoApp')
                         series: [{
                             data: [0, 0, 5, 25, 10]
                         }],
-                        //Title configuration (optional)
-                        title: {
-                            text: 'Taille',
-                            align: 'left'
-                        },
-                        subtitle: {
-                            text: 'Les Kippmeyers ayant cet article trouvent qu’il taille :',
-                            align: 'left'
-                        },
                         //Boolean to control showng loading status on chart (optional)
                         //Could be a string if you want to show specific loading text.
                         loading: false,

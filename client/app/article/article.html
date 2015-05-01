@@ -19,7 +19,7 @@
                     <li><img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive" style="margin:auto"></li>
                 </ul>
                 <a ng-href="{{article.brandLink}}" target="_blank">
-                    <div style="padding:15px;text-align:center;border:1px lightgrey solid">
+                    <div style="padding:5px;text-align:center;border:1px lightgrey solid">
                         <span class="text-info">Voir le site de la marque</span>
                     </div>
                 </a>
@@ -39,9 +39,10 @@
             </div>
             <div class="col-md-7">
 
-                <div style="padding-bottom:10px" class="text-danger">{{article.department}} - {{article.collectionType}} - {{article.category}} </div>
 
-                <div>{{article.description}}</div>
+                <div style="padding-top:20px">
+                    <highchart id="chart1" config="chartPolar"></highchart>
+                </div>
                 <div style="padding-top:10px">
                     Matériels :
                     <ui-select multiple ng-model="article.materials" theme="bootstrap" disabled="true" style="width: 75%;display: inline-block;background:none;border:none">
@@ -60,12 +61,12 @@
                         </ui-select-choices>
                     </ui-select>
                 </div>
-                <div style="padding-top:20px">
-                    <highchart id="chart1" config="chartPolar"></highchart>
-                </div>
                 <div id="clients" style="padding-top:20px">
                     <highchart id="chart2" config="chartBar"></highchart>
                 </div>
+
+
+
             </div>
             <div class="col-md-2">
                 <div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
