@@ -138,6 +138,9 @@ angular.module('nepcoApp')
                             categories: ['Très petit', 'Petit', 'Normalement', 'Grand', 'Très grand']
                         }
                     };
+
+
+                    $('.social-likes').socialLikes();
                 });
             }
         };

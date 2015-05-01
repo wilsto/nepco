@@ -1,34 +1,53 @@
 'use strict';
 
 angular.module('nepcoApp')
-    .controller('MainCtrl', function($scope, $http, socket) {
-        $scope.awesomeThings = [];
-
-        $http.get('/api/things').success(function(awesomeThings) {
-            $scope.awesomeThings = awesomeThings;
-            socket.syncUpdates('thing', $scope.awesomeThings);
-        });
+    .controller('MainCtrl', function($scope, $http) {
 
         $http.get('/api/articles/').success(function(articles) {
             $scope.articles = articles;
-        });
-
-
-        $scope.addThing = function() {
-            if ($scope.newThing === '') {
-                return;
-            }
-            $http.post('/api/things', {
-                name: $scope.newThing
+            $('#slide').camera({
+                height: 'auto',
+                time: 5000,
+                navigation: false,
+                navigationHover: false,
+                hover: false,
+                playPause: false
             });
-            $scope.newThing = '';
-        };
-
-        $scope.deleteThing = function(thing) {
-            $http.delete('/api/things/' + thing._id);
-        };
-
-        $scope.$on('$destroy', function() {
-            socket.unsyncUpdates('thing');
         });
-    });
+
+
+
+    }).directive("owlCarousel", function() {
+        return {
+            restrict: 'E',
+            transclude: false,
+            link: function(scope) {
+                scope.initCarousel = function(element) {
+                    // provide any default options you want
+                    var defaultOptions = {};
+                    var customOptions = scope.$eval($(element).attr('data-options'));
+                    // combine the two options objects
+                    for (var key in customOptions) {
+                        defaultOptions[key] = customOptions[key];
+                    }
+                    // init carousel
+                    $(element).owlCarousel(defaultOptions);
+                };
+            }
+        };
+    })
+    .directive('owlCarouselItem', [
+
+        function() {
+            return {
+                restrict: 'A',
+                transclude: false,
+                link: function(scope, element) {
+                    // wait for the last item in the ng-repeat then call init
+                    if (scope.$last) {
+                        scope.initCarousel(element.parent());
+                    }
+                }
+            };
+        }
+    ]);

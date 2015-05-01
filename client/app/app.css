@@ -38,14 +38,3 @@
     padding: 0.2em 0;
 }
 
-.navbar-default .navbar-nav > li > a {
-      color: #FFFFFF!important ;
-}
-.navbar-default .navbar-nav > .active > a {
-      color: #88C425!important ;
-  background-color: #27292B!important;
-}
-
-.navbar-default .navbar-text {
-  color: #CCCCCC!important;
-}

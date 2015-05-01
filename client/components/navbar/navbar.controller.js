@@ -3,11 +3,20 @@
 angular.module('nepcoApp')
     .controller('NavbarCtrl', function($scope, $location, Auth) {
         $scope.menu = [{
-            'title': 'Home',
+            'title': 'Accueil',
             'link': '/',
+        }, {
+            'title': 'Mission',
+            'link': '/mission'
         }, {
             'title': 'Articles',
             'link': '/articles'
+        }, {
+            'title': 'Partenaires',
+            'link': '/partenaires'
+        }, {
+            'title': 'Blog',
+            'link': '/blog'
         }];
 
         $scope.isCollapsed = true;

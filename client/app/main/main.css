@@ -28,3 +28,108 @@
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
 }
+
+
+/* Works Styles ------------------------------------*/
+
+.works{
+    
+}
+
+#works .item-work {
+    max-width: 280px;   
+
+}
+#works .item-work:first-child{
+    margin-left: 40px;
+}
+.item-work  img{
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+.item-work  .hover{
+    position: relative;
+    overflow: hidden;
+}
+.item-work  .info-work{
+    font-size: 14px;
+    padding: 10px 5px;
+    background: #fff;
+    border:solid 1px #cdcdcd;
+    border-top: 0;  
+    text-align: center; 
+}
+.item-work .info-work h4{
+    padding: 0;
+    font-weight: 300;
+}
+.item-work .info-work p{
+    font-size: 13px;
+    line-height: 23px;
+}
+.item-work .info-work .icons-work{
+    display: inline;
+    padding: 12px 20px;
+    margin-top: 15px;
+}
+.item-work  .info-work i{
+    padding: 0 5px;
+    color: #131313;
+    font-size: 16px;
+}
+.item-work  .info-work i:hover{
+    cursor: pointer;
+}
+.overlay{
+    position: absolute; 
+    left: 0;
+    top: 0px;
+    opacity: 0; 
+    width: 100%;
+    height: 100%;   
+    z-index: 1;
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    transition: 0.3s all ease;
+}
+.item-work:hover .overlay{
+    opacity: 1;
+    cursor: pointer;    
+    -webkit-transition: 0.3s all ease;
+    -moz-transition: 0.3s all ease;
+    -o-transition: 0.3s all ease;
+    -ms-transition: 0.3s all ease;
+    transition: 0.3s all ease;
+}
+.portfolioContainer .item-work{
+    margin-bottom: 30px;
+}
+.carousel img{
+    width: 100%;
+}
+.carousel-control .icon-prev, .carousel-control .icon-next {
+    font-size: 50px;
+}
+.technologies{
+    margin: 25px 0;
+}
+.technologies i{
+    font-size: 2em;
+    margin:auto 10px;
+}
+.list li{
+    line-height: 35px;
+}
+.list li i{
+    padding-right: 8px;
+    font-size: 14px;
+}
+#slide-services .item-work{
+    margin-bottom: 25px;
+}
+#slide-services .item-work h4{
+    font-size: 14px;
+}
