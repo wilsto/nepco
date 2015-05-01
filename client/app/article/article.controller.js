@@ -18,7 +18,7 @@ angular.module('nepcoApp')
                         },
 
                         title: {
-                            text: 'Nepcode Profil',
+                            text: 'Profil Performance',
                             align: 'left'
                         },
 

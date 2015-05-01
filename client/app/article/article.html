@@ -1,81 +1,92 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
+
 <div class="row">
     <div class="col-md-offset-1 col-md-10">
-
-        <tabset>
-
-            <tab active="true">
-                <tab-heading>
-                    Description
-                </tab-heading>
-                    <h3>Information</h3>
-                <div class="row">
-                    <div class="col-md-2">
-<ul class="polaroids">
-    <li><img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive" style="margin:auto"></li>
-</ul>
-                        
+        <span class="pull-right">Ref : / Kcode :</span>
+        <h2 id="description" style="padding:0">{{article.brand}} </h2>
+        <div class="icons-work pull-right">
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star-o"></span>
+        </div>
+        <h3 style="padding:0">{{article.name}} <span class="text-primary"> {{article.price}}€</span> </h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="polaroids">
+                    <li><img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive" style="margin:auto"></li>
+                </ul>
+                <a ng-href="{{article.brandLink}}" target="_blank">
+                    <div style="padding:15px;text-align:center;border:1px lightgrey solid">
+                        <span class="text-info">Voir le site de la marque</span>
                     </div>
-                    <div class="col-md-8">
+                </a>
+                <h4 style="padding-top:20px"><u>Le plus produit</u></h4>
+                <small>
+                        Cet encart permet de mettre en avant un point de qualité non pris en compte dans le cahier des charges KIPPME mais important au regard de l’information client. Le texte est rédigé ou validé par KIPPME.com
+                        </small>
+            </div>
+            <div class="col-md-7">
 
-                        <h2>{{article.name}}</h2>
-                        <div style="padding-bottom:10px" class="text-danger">{{article.department}} - {{article.collectionType}} - {{article.category}} </div>
+                <div style="padding-bottom:10px" class="text-danger">{{article.department}} - {{article.collectionType}} - {{article.category}} </div>
 
-                        <div>{{article.description}}</div>
-                                            <div style="padding-top:10px">
-                        Materials :  <ui-select multiple ng-model="article.materials" theme="bootstrap" disabled="true" style="width: 75%;display: inline-block;background:none;border:none">
+                <div>{{article.description}}</div>
+                <div style="padding-top:10px">
+                    Matériels :
+                    <ui-select multiple ng-model="article.materials" theme="bootstrap" disabled="true" style="width: 75%;display: inline-block;background:none;border:none">
                         <ui-select-match placeholder="Select materials...">{{$item}}</ui-select-match>
                         <ui-select-choices repeat="materials in materialss | filter:$select.search track by $index" refresh="refresh($select.search, 'materials')" refresh-delay="0">
-                          {{materials}}
+                            {{materials}}
                         </ui-select-choices>
-                      </ui-select>
-                    </div>
-                    <div style="padding-top:10px">
-                        Presence :  <ui-select multiple ng-model="article.presence" theme="bootstrap" disabled="true" style="width: 75%;display: inline-block;background:none;border:none">
+                    </ui-select>
+                </div>
+                <div style="padding-top:10px">
+                    Présence :
+                    <ui-select multiple ng-model="article.presence" theme="bootstrap" disabled="true" style="width: 75%;display: inline-block;background:none;border:none">
                         <ui-select-match placeholder="Select presence...">{{$item}}</ui-select-match>
                         <ui-select-choices repeat="presence in presences | filter:$select.search track by $index" refresh="refresh($select.search, 'presence')" refresh-delay="0">
-                          {{presence}}
+                            {{presence}}
                         </ui-select-choices>
-                      </ui-select>
-                    </div>
-                    </div>
-                    <div class="col-md-2">
-                    <div  style="margin:auto;">
-                            <canvas id="ean" width="150" height="75">
-                                Your browser does not support canvas-elements.
-                            </canvas>
-                            </div>
-                            <small class="text-muted pull-right">Commercials</small>
-                        <a ng-href="{{article.brandLink}}" target="_blank">
-                            <div class="pull-right" style="padding:25px;text-align:center;border:1px lightgrey solid">
-                                <i class="fa fa-external-link"></i>
-                                <span class="text-info" >{{article.brand}}</span>  
-                                {{article.price}}€
-                            </div>
-                        </a>
+                    </ui-select>
                 </div>
+                <div style="padding-top:20px">
+                    <highchart id="chart1" config="chartPolar"></highchart>
                 </div>
+                <div>
+                    <div id="chart2" config="chartBar"></div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+                    <ul class="nav bs-docs-sidenav">
+                        <li style="padding-bottom:25px">
 
-                    <h3>Test Results</h3>
-<highchart id="chart1" config="chartPolar"></highchart>
-            </tab>
-            <tab>
-                <tab-heading>
-                    Client's Reviews
-                </tab-heading>
+                            <a ng-href="/articleedit/{{article.EAN13}}" class="btn btn-success">Modifier cet article</a>
 
-            </tab>
-            <tab>
-                <tab-heading>
-                    Locations
-                </tab-heading>
+                        </li>
+                        <li>
+                            <a href="#description"><i class="fa  fa-bolt"></i> Description</a>
+                        </li>
+                        <li>
 
-            </tab>
-                                        <div class="pull-right">
-                    <a ng-href="/articleedit/{{article.EAN13}}" class="btn btn-success">Edit this article</a>
+                            <a href="#clients"><i class="fa fa-group"></i> Avis clients</a></li>
+                        <li>
+
+                            <a href="#location"><i class="fa fa-map-marker"></i> Où trouver</a>
+                        </li>
+                    </ul>
+                </div>
+                <small class="text-muted pull-right" style="padding-top:25px">Commercials</small>
+                <a ng-href="{{article.brandLink}}" target="_blank">
+                    <div class="pull-right" style="padding:25px;text-align:center;border:1px lightgrey solid">
+                        <span class="text-info">Mettre ici des liens sponsorisés payés au clic</span>
+                        <i class="fa fa-external-link"></i>
+
                     </div>
-
-        </tabset>
-
+                </a>
+            </div>
+        </div>
     </div>
 </div>
