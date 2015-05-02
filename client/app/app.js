@@ -10,7 +10,8 @@ angular.module('nepcoApp', [
     'ui.select',
     'pickAColor',
     'ui.bootstrap.datetimepicker',
-    'highcharts-ng'
+    'highcharts-ng',
+    'ui-rangeSlider'
 ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

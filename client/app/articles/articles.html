@@ -1,44 +1,62 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-    <div class="well well-sm">
-        <strong style="padding-right:25px">Top-rated articles</strong>
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
+    <div class="row">
+        <div class="well well-sm col-md-2">
+            <strong style="padding-right:25px">Affiner par</strong>
+            <h4>Mot-clé</h4>
+            <input style="margin-top:-12px" type="text" class="form-control" ng-model="searchText">
+            <h4>Performance</h4>
+                <div style="margin-top:-12px" range-slider min="minPerf" max="maxPerf" step="0.5" model-min="userMinPerf" model-max="userMaxPerf" decimal-places="1" showValues="true" ></div>
+            <h4>Prix</h4>
+                <div style="margin-top:-12px" range-slider min="minPrice" step="10" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" showValues="true"filter="currency:'€':0" ></div>
+             <h4>Marque</h4>
+            <ul style="margin-top:-12px">
+                **todo**
+                <li style="margin-left: 10px" ng-repeat="brand in brands">
+                    <a href="#" ng-click="addFilter('Brand',$index)">
+                        <input id="brand_{{brand}}" type="checkbox" class="inline-block">
+                        <span >{{brand}}</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="pull-right">
-          <a class="btn btn-success" href="/articleedit/">Create a new article</a>
-        </div>
-    </div>
-    <div id="products" class="row list-group">
-        <div class="item  col-xs-4 col-lg-4" ng-repeat="article in articles">
-            <div class="thumbnail">
-               <a  href="/article/{{article.EAN13}}">  <img class="group list-group-image" ng-src="{{article.photoLink}}" alt="" /></a>
-                <div class="caption">
-                    <h4 class="group inner list-group-item-heading">
-                        {{article.name}}</h4>
-                        <p class="group inner list-group-item-text" style="padding-bottom:15px;">
-                            {{article.description}}
-                        </p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-7">
-                            <div class="icons-work">
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star-o"></span>
+
+        <div id="products" class="row list-group col-md-10" style="padding-left:25px">
+            <div class="well well-sm  col-xs-12 col-lg-12" style="padding-bottom:15px;border:1px #ccc solid; margin:15px">
+                <small class="text-danger">Admin Only</small>
+                <a class="btn btn-primary pull-right" href="/articleedit/">Créer un article</a>
+            </div>
+            <div class="item col-xs-12 col-lg-12" ng-repeat="article in articles">
+                <a href="/article/{{article.EAN13}}"> 
+                    <div class="" style="border:1px #ccc solid; margin:5px">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="pull-left" style="margin:5px">
+                                    <img class="group list-group-image" ng-src="{{article.photoLink}}" alt="" style="max-height:150px"/>
+                                </div>
+                                <h4 class=""> {{article.name}}</h4>
+                                <h5 class="" style="margin-top:-20px"> {{article.brand}}</h5>
+                                <span class="" style="margin-top:-20px"> {{article.price || 0}} €</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="text-muted">Performance</span>
+                                <div class="icons-work" style="margin:5px">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star-o"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-5">
-                            <a class="btn btn-success" href="/article/{{article.EAN13}}">View details</a>
-                        </div>
                     </div>
-                </div>
+                </a>
             </div>
+
         </div>
-      
+
+
     </div>
+
 </div>

@@ -28,7 +28,8 @@
     "highcharts": "~4.1.4",
     "angular-google-maps": "~2.1.0",
     "camera.slideshow": "~1.4.0",
-    "social-likes": "~3.0.14"
+    "social-likes": "~3.0.14",
+    "angular-rangeslider": "~0.0.13"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
