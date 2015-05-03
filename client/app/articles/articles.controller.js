@@ -16,9 +16,16 @@ angular.module('nepcoApp')
         $scope.userMinPrice = $scope.minPrice;
         $scope.userMaxPrice = $scope.maxPrice;
 
+        $scope.getRandom = function() {
+            return Math.floor((Math.random() * 5) + 1);
+        }
+
         $http.get('/api/articles/').success(function(articles) {
             $scope.allarticles = articles;
-            $scope.articles = articles;
+            _.each($scope.allarticles, function(article) {
+                article.perf = $scope.getRandom();
+            })
+            $scope.articles = $scope.allarticles;
             $scope.filterArticles();
         });
 
@@ -27,23 +34,10 @@ angular.module('nepcoApp')
                 $scope.brands = _.filter(data.data, function(list) {
                     return list.name === 'brand';
                 })[0].list;
-
             }, function() {
                 console.log('ERROR!!! NO LIST');
             }
         );
-
-        $(document).ready(function() {
-            $('#list').click(function(event) {
-                event.preventDefault();
-                $('#products .item').addClass('list-group-item');
-            });
-            $('#grid').click(function(event) {
-                event.preventDefault();
-                $('#products .item').removeClass('list-group-item');
-                $('#products .item').addClass('grid-group-item');
-            });
-        });
 
         $scope.$watch('searchText', function() {
             $scope.filterArticles();
@@ -55,14 +49,20 @@ angular.module('nepcoApp')
         $scope.$watch('userMaxPrice', function() {
             $scope.filterArticles();
         });
-
+        $scope.$watch('userMinPerf', function() {
+            $scope.filterArticles();
+        });
+        $scope.$watch('userMaxPerf', function() {
+            $scope.filterArticles();
+        });
         $scope.filterArticles = function() {
             $scope.articles = _.filter($scope.allarticles, function(article) {
                 var blnSearchText = ($scope.searchText.length === 0) ? true : article.name.toLowerCase().indexOf($scope.searchText.toLowerCase()) >= 0;
                 var price = (article.price === undefined) ? 0 : article.price.replace(',', '.');
                 var blnSearchPrice = (parseFloat($scope.userMinPrice) <= parseFloat(price) && parseFloat($scope.userMaxPrice) >= parseFloat(price));
-                console.log('blnSearchPrice', blnSearchPrice);
-                return blnSearchText && blnSearchPrice;
+                var blnSearchPerf = (parseFloat($scope.userMinPerf) <= parseFloat(article.perf) && parseFloat($scope.userMaxPerf) >= parseFloat(article.perf));
+
+                return blnSearchText && blnSearchPrice && blnSearchPerf;
             });
         };
     });
