@@ -17,7 +17,8 @@ module.exports = function(grunt) {
         cdnify: 'grunt-google-cdn',
         protractor: 'grunt-protractor-runner',
         injector: 'grunt-asset-injector',
-        buildcontrol: 'grunt-build-control'
+        buildcontrol: 'grunt-build-control',
+        removelogging: 'grunt-remove-logging'
     });
 
     // Time how long tasks take. Can help when optimizing build times
@@ -273,7 +274,11 @@ module.exports = function(grunt) {
                 }]
             }
         },
-
+        removelogging: {
+            dist: {
+                src: ['<%= yeoman.client %>/{app,components}/**/*.js'] // Each file will be overwritten with the output!
+            }
+        },
         svgmin: {
             dist: {
                 files: [{
@@ -586,6 +591,7 @@ module.exports = function(grunt) {
         'clean:dist',
         'concurrent:dist',
         'injector',
+        'removelogging',
         'wiredep',
         'useminPrepare',
         'autoprefixer',

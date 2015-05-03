@@ -47,7 +47,7 @@ angular.module('nepcoApp')
                     return list.name === 'brand';
                 })[0].list;
             }, function() {
-                console.log('ERROR!!! NO LIST');
+                
             }
         );
 
@@ -74,9 +74,9 @@ angular.module('nepcoApp')
                 var blnSearchPrice = (parseFloat($scope.userMinPrice) <= parseFloat(price) && parseFloat($scope.userMaxPrice) >= parseFloat(price));
                 var blnSearchPerf = (parseFloat($scope.userMinPerf) <= parseFloat(article.perf) && parseFloat($scope.userMaxPerf) >= parseFloat(article.perf));
                 var blnSearchBrand = ($scope.searchBrand.length > 0) ? _.contains($scope.searchBrand, article.brand) : true;
-                console.log('article.brand', article.brand);
-                console.log('$scope.searchBrand', $scope.searchBrand);
-                console.log('blnSearchBrand', blnSearchBrand);
+                
+                
+                
                 return blnSearchText && blnSearchPrice && blnSearchPerf && blnSearchBrand;
             });
         };

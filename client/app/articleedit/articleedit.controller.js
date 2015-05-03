@@ -49,7 +49,7 @@ angular.module('nepcoApp')
                 function(response) {
                     $scope[listName.substring(0, 1).toLowerCase() + listName.substring(1) + 's'] = (response.data[0]) ? response.data[0].list : [];
                 }, function() {
-                    console.log('ERROR!!! NO LIST');
+                    
                 }
             );
         };
