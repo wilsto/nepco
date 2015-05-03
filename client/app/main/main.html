@@ -90,16 +90,14 @@
                 <!-- Items Works -->
  <data-owl-carousel id="works" class="owl-carousel" data-options="{navigation: false, pagination: true, rewindNav : true, autoPlay: 3000, items:4}">
       <div owl-carousel-item="" ng-repeat="article in ::articles" class="item-work">
+       <a href="/article/{{article.EAN13}}">
 <div class="thumbnail">
-                <img class="group list-group-image" ng-src="{{article.photoLink}}" alt="" style="width:75px"/>
+                <img class="group list-group-image" ng-src="{{article.photoLink}}" alt="" style="width:100px"/>
                 <div class="caption">
-                    <h4 class="group inner list-group-item-heading">
+                <h4><b>{{article.brand | uppercase}}</b></h4>
+                    <h4 style="margin-top:-15px" class="group inner list-group-item-heading">
                         {{article.name}}</h4>
-                        <p class="group inner list-group-item-text" style="padding-bottom:15px;">
-                            {{article.description}}
-                        </p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
+
                             <div class="icons-work">
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
@@ -107,13 +105,9 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star-o"></span>
                             </div>
-                        </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="/article/{{article.EAN13}}">View details</a>
-                        </div>
-                    </div>
                 </div>
             </div>
+            </a>
       </div>
     </data-owl-carousel>
                 <!-- End Items Works -->
