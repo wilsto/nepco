@@ -12,10 +12,9 @@
                 <div style="margin-top:-12px" range-slider min="minPrice" step="10" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" showValues="true"filter="currency:'€':0" ></div>
              <h4>Marque</h4>
             <ul style="margin-top:-12px">
-                **todo**
                 <li style="margin-left: 10px" ng-repeat="brand in brands">
-                    <a href="#" ng-click="addFilter('Brand',$index)">
-                        <input id="brand_{{brand}}" type="checkbox" class="inline-block">
+                    <a href="#" ng-click="addFilterBrand(brand)">
+                        <input id="brand_{{brand}}" type="checkbox" class="inline-block" ng-model="isFilterBrand(brand)">
                         <span >{{brand}}</span>
                     </a>
                 </li>

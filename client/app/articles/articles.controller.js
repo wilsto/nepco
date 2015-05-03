@@ -3,6 +3,7 @@
 angular.module('nepcoApp')
     .controller('ArticlesCtrl', function($scope, $http) {
         $scope.searchText = '';
+        $scope.searchBrand = [];
 
         // set available range
         $scope.minPerf = 0;
@@ -19,6 +20,17 @@ angular.module('nepcoApp')
         $scope.getRandom = function() {
             return Math.floor((Math.random() * 5) + 1);
         }
+
+
+        $scope.addFilterBrand = function(brandname) {
+            $scope.searchBrand = _.xor($scope.searchBrand, [brandname]);
+            $scope.filterArticles();
+        }
+
+        $scope.isFilterBrand = function(brandname) {
+            return _.contains($scope.searchBrand, brandname);
+        }
+
 
         $http.get('/api/articles/').success(function(articles) {
             $scope.allarticles = articles;
@@ -61,8 +73,11 @@ angular.module('nepcoApp')
                 var price = (article.price === undefined) ? 0 : article.price.replace(',', '.');
                 var blnSearchPrice = (parseFloat($scope.userMinPrice) <= parseFloat(price) && parseFloat($scope.userMaxPrice) >= parseFloat(price));
                 var blnSearchPerf = (parseFloat($scope.userMinPerf) <= parseFloat(article.perf) && parseFloat($scope.userMaxPerf) >= parseFloat(article.perf));
-
-                return blnSearchText && blnSearchPrice && blnSearchPerf;
+                var blnSearchBrand = ($scope.searchBrand.length > 0) ? _.contains($scope.searchBrand, article.brand) : true;
+                console.log('article.brand', article.brand);
+                console.log('$scope.searchBrand', $scope.searchBrand);
+                console.log('blnSearchBrand', blnSearchBrand);
+                return blnSearchText && blnSearchPrice && blnSearchPerf && blnSearchBrand;
             });
         };
     });
