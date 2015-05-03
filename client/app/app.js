@@ -48,6 +48,23 @@ angular.module('nepcoApp', [
 })
 
 .run(function($rootScope, $location, Auth) {
+    $rootScope.menu = [{
+        'title': 'Accueil',
+        'link': '/',
+    }, {
+        'title': 'Mission',
+        'link': '/mission'
+    }, {
+        'title': 'Articles',
+        'link': '/articles'
+    }, {
+        'title': 'Partenaires',
+        'link': '/partenaires'
+    }, {
+        'title': 'Blog',
+        'link': '/blog'
+    }];
+
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function(event, next) {
         Auth.isLoggedInAsync(function(loggedIn) {

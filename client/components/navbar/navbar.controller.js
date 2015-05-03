@@ -1,23 +1,8 @@
 'use strict';
 
 angular.module('nepcoApp')
-    .controller('NavbarCtrl', function($scope, $location, Auth) {
-        $scope.menu = [{
-            'title': 'Accueil',
-            'link': '/',
-        }, {
-            'title': 'Mission',
-            'link': '/mission'
-        }, {
-            'title': 'Articles',
-            'link': '/articles'
-        }, {
-            'title': 'Partenaires',
-            'link': '/partenaires'
-        }, {
-            'title': 'Blog',
-            'link': '/blog'
-        }];
+    .controller('NavbarCtrl', function($scope, $rootScope, $location, Auth) {
+
 
         $scope.isCollapsed = true;
         $scope.isLoggedIn = Auth.isLoggedIn;

@@ -1,6 +1,20 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
 
 <section class="row ">
+<div class="col-md-12 text-center">
+
+<img src="assets/images/logo/kippme.JPG" style="height:200px" />
+
+    <div collapse="isCollapsed" class="navbar-collapse collapse text-center" id="navbar-main">
+      <ul>
+        <li style="display:inline;padding-right:20px" ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+            <a ng-href="{{item.link}}" style="color:black"><b>{{item.title}}</b></a>
+        </li>
+      </ul>
+  </div>
+</div>
+</section>
+
+<section class="row " style="padding-top:15px">
 <div class="col-md-offset-2 col-md-8">
     <nit-advanced-searchbox ng-model="searchParams" parameters="availableSearchParams" placeholder="Rechercher..."></nit-advanced-searchbox>
     </div>
@@ -17,10 +31,10 @@
                             <div class="col-md-8">
                                 <h1 class="animated bounceInRight delay1">
                         <span>
-                         LE TEST 
+                         LE FOCUS 
                             
                             <span class="border"></span>
-                        </span>DE LA SEMAINE
+                        </span>DU MOMENT
                                 </h1>
                                 <p class="lead animated bounceInUp delay2">L’imperméabilité 
 </p>
@@ -43,7 +57,7 @@
                         L’ARTICLE 
                             
                             <span class="border"></span>
-                        </span>DE LA SEMAINE
+                        </span>DU MOMENT
                                 </h1>
                                 <p class="lead animated bounceInUp delay2" style="color:#000">L’interview de la Bloggeuse Céline Artis.</p>
                                 <a  class="btn btn-lg btn-primary animated bounceInUp delay2" href="#">Voir l'info</a>
@@ -65,7 +79,7 @@
                         LE BON PLAN 
                             
                             <span class="border"></span>
-                        </span>DE LA SEMAINE
+                        </span>DU MOMENT
                     </h1>
                     <p class="lead animated bounceInUp delay2">10% de remise sur les articles référencés sur KiPPME.</p>
                      <a class="btn btn-lg btn-primary animated bounceInUp delay2" href="#">Voir l'info</a>

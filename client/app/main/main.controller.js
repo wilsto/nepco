@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('nepcoApp')
-    .controller('MainCtrl', function($scope, $http) {
+    .controller('MainCtrl', function($scope, $http, $rootScope) {
 
         $http.get('/api/articles/').success(function(articles) {
             $scope.articles = articles;
