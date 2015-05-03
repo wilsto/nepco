@@ -11,7 +11,8 @@ angular.module('nepcoApp', [
     'pickAColor',
     'ui.bootstrap.datetimepicker',
     'highcharts-ng',
-    'ui-rangeSlider'
+    'ui-rangeSlider',
+    'angular-advanced-searchbox'
 ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider

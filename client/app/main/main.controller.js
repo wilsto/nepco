@@ -15,7 +15,20 @@ angular.module('nepcoApp')
             });
         });
 
-
+        $scope.availableSearchParams = '';
+        $scope.availableSearchParams = [{
+            key: 'Dénomination',
+            name: 'Dénomination',
+            placeholder: 'Dénomination'
+        }, {
+            key: 'EAN',
+            name: 'EAN',
+            placeholder: 'EAN'
+        }, {
+            key: 'Ref',
+            name: 'Ref',
+            placeholder: 'Ref'
+        }];
 
     }).directive("owlCarousel", function() {
         return {
