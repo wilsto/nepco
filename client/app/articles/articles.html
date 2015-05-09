@@ -6,7 +6,7 @@
             <strong style="padding-right:25px">Affiner par</strong>
             <h4>Mot-clé</h4>
             <input style="margin-top:-12px" type="text" class="form-control" ng-model="searchText">
-            <h4>Performance</h4>
+            <h4>Performance globale</h4>
                 <div style="margin-top:-12px" range-slider min="minPerf" max="maxPerf" step="0.5" model-min="userMinPerf" model-max="userMaxPerf" decimal-places="1" showValues="true" ></div>
             <h4>Prix</h4> <small style="float:right;margin-top:-40px;font-size:16px">{{meanPrice}}€ Moyen</small>
                 <div style="margin-top:-12px" range-slider min="minPrice" step="10" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" showValues="true"filter="currency:'€':0" ></div>
@@ -39,13 +39,13 @@
                                 <span class="" style="margin-top:-20px"> {{article.price || 0}} €</span>
                             </div>
                             <div class="col-md-4">
-                                <span class="text-muted">Performance</span>
+                                <span class="text-muted">Performance globale</span>
                                 <div class="icons-work" style="margin:5px">
-                                    <span class="fa " ng-class="{'fa-star':article.perf>=1,'fa-star-o':article.perf<1}"></span>
-                                    <span class="fa " ng-class="{'fa-star':article.perf>=2,'fa-star-o':article.perf<2}"></span>
-                                    <span class="fa " ng-class="{'fa-star':article.perf>=3,'fa-star-o':article.perf<3}"></span>
-                                    <span class="fa " ng-class="{'fa-star':article.perf>=4,'fa-star-o':article.perf<4}"></span>
-                                    <span class="fa " ng-class="{'fa-star':article.perf>=5,'fa-star-o':article.perf<5}"></span> &nbsp;&nbsp;{{article.perf}}
+                                    <span class="fa fagold" ng-class="{'fa-star':article.perf>=1,'fa-star-o':article.perf<1}"></span>
+                                    <span class="fa fagold" ng-class="{'fa-star':article.perf>=2,'fa-star-o':article.perf<2}"></span>
+                                    <span class="fa fagold" ng-class="{'fa-star':article.perf>=3,'fa-star-o':article.perf<3}"></span>
+                                    <span class="fa fagold" ng-class="{'fa-star':article.perf>=4,'fa-star-o':article.perf<4}"></span>
+                                    <span class="fa fagold" ng-class="{'fa-star':article.perf>=5,'fa-star-o':article.perf<5}"></span> &nbsp;&nbsp;<span class="fagold" style="font-style:bold">{{article.perf}}</span>
                                 </div>
                             </div>
                         </div>

@@ -61,3 +61,8 @@ ul.polaroids {
   -webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
   -moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
 }
+
+.fagold{
+    color : #D6B63F;
+    font-weight: bold;
+}
