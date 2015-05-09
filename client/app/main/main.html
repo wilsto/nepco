@@ -1,13 +1,27 @@
 
 <section class="row ">
-<div class="col-md-12 text-center">
+<div class="col-md-12 text-center center-block">
 
 <img src="assets/images/logo/kippme.JPG" style="height:200px" />
+<div class="center-block row col-sm-12 col-md-offset-2 col-md-8" >
+    <img src="assets/images/logo/sous-logo.JPG" class="img-responsive" />
+</div>
 
+</section>
+<section class="row ">
+<hr class="logohr">
     <div collapse="isCollapsed" class="navbar-collapse collapse text-center" id="navbar-main">
       <ul>
-        <li style="display:inline;padding-right:20px" ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-href="{{item.link}}" style="color:black"><b>{{item.title}}</b></a>
+        <li style="display:inline;padding-left:30px;padding-right:30px" ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+            <a ng-href="{{item.link}}" style="color:grey"><b>{{item.title}}</b></a>
+        </li>
+        <li style="float:right"  style="display:inline">
+<form role="form" style="width:350px;margin-right:50px;"> 
+  <div class="form-group has-feedback">
+    <input type="text" class="form-control" placeholder="Rechercher le PP d'un article" />
+    <i class="form-control-feedback fa fa-search" style="top:0px;"></i>
+  </div>
+</form>
         </li>
       </ul>
   </div>
@@ -16,7 +30,6 @@
 
 <section class="row " style="padding-top:15px">
 <div class="col-md-offset-2 col-md-8">
-    <nit-advanced-searchbox ng-model="searchParams" parameters="availableSearchParams" placeholder="Rechercher..."></nit-advanced-searchbox>
     </div>
 </section>
 

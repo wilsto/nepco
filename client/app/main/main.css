@@ -133,3 +133,13 @@
 #slide-services .item-work h4{
     font-size: 14px;
 }
+
+
+
+.logohr { 
+    display: block; 
+    height: 0px;
+    border-top: 4px solid #D6B63F!important;
+    margin: 1em 0;
+    padding: 0; 
+ }

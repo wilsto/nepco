@@ -52,13 +52,13 @@ angular.module('nepcoApp', [
         'title': 'Accueil',
         'link': '/',
     }, {
-        'title': 'Mission',
+        'title': 'Nos Missions',
         'link': '/mission'
     }, {
-        'title': 'Articles',
+        'title': 'Les Articles',
         'link': '/articles'
     }, {
-        'title': 'Partenaires',
+        'title': 'Nos Partenaires',
         'link': '/partenaires'
     }, {
         'title': 'Blog',
