@@ -27,7 +27,9 @@ angular.module('nepcoApp')
                                 }
                             }
                         },
-
+                        size: {
+                            height: 480
+                        },
                         title: {
                             text: 'Profil Performance',
                             align: 'left'

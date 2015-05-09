@@ -3,19 +3,20 @@
 <div class="row">
     <div class="col-md-offset-1 col-md-10 ">
         
-        <h2 id="description" style="padding:0">{{article.brand}} </h2>
+        <h2 id="description" style="padding:0">{{article.brand | uppercase}} </h2>
         <div class="icons-work pull-right">
-            <span class="fa fagold fa-star"></span>
-            <span class="fa fagold fa-star"></span>
-            <span class="fa fagold fa-star"></span>
-            <span class="fa fagold fa-star"></span>
-            <span class="fa fagold sfa-star-o"></span>
+            <span class="fa fagold fa-2x fa-star"></span>
+            <span class="fa fagold fa-2x fa-star"></span>
+            <span class="fa fagold fa-2x fa-star"></span>
+            <span class="fa fagold fa-2x fa-star"></span>
+            <span class="fa fagold fa-2x fa-star-o"></span>
         </div>
-        <h3 style="padding:0">{{article.name}} <span class="text-primary"> {{article.price}}€</span> </h3>
-        <span >EAN : {{article.EAN13 }} - Ref :{{article.seller }}</span>
+        <h3 style="padding:0;">{{article.name}} -  
+        <span class="text-muted" style="line-height: 50px;font-size:19px"> {{article.price}}€</span> </h3>
+        <span style="line-height: 40px">EAN : {{article.EAN13 }} - Ref :{{article.seller }}</span>
         <hr>
         <div class="row">
-            <div class="col-md-3 col-xs-12">
+            <div class="col-md-2 col-xs-12">
                 <ul class="polaroids">
                     <li><img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive" style="margin:auto"></li>
                 </ul>
@@ -33,7 +34,7 @@
                     </div>
                                                     
             </div>
-            <div class="col-md-7 col-xs-12">
+            <div class="col-md-8 col-xs-12">
 
 
                 <div style="padding-top:20px">
