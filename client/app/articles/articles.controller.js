@@ -31,12 +31,24 @@ angular.module('nepcoApp')
             return _.contains($scope.searchBrand, brandname);
         }
 
+        function average(arr) {
+            return _.reduce(arr, function(memo, num) {
+                return memo + parseFloat(num);
+            }, 0) / arr.length;
+        }
 
-        $http.get('/api/articles/').success(function(articles) {
+        $http.get('/api/articles').success(function(articles) {
             $scope.allarticles = articles;
             _.each($scope.allarticles, function(article) {
                 article.perf = $scope.getRandom();
             })
+            $scope.minPrice = parseInt(_.min($scope.allarticles, function(o) {
+                return parseFloat(o.price);
+            }).price);
+            $scope.maxPrice = parseInt(_.max($scope.allarticles, function(o) {
+                return parseFloat(o.price);
+            }).price);
+            $scope.meanPrice = parseInt(average(_.compact(_.pluck($scope.allarticles, 'price'))));
             $scope.articles = $scope.allarticles;
             $scope.filterArticles();
         });
@@ -74,9 +86,6 @@ angular.module('nepcoApp')
                 var blnSearchPrice = (parseFloat($scope.userMinPrice) <= parseFloat(price) && parseFloat($scope.userMaxPrice) >= parseFloat(price));
                 var blnSearchPerf = (parseFloat($scope.userMinPerf) <= parseFloat(article.perf) && parseFloat($scope.userMaxPerf) >= parseFloat(article.perf));
                 var blnSearchBrand = ($scope.searchBrand.length > 0) ? _.contains($scope.searchBrand, article.brand) : true;
-
-
-
                 return blnSearchText && blnSearchPrice && blnSearchPerf && blnSearchBrand;
             });
         };

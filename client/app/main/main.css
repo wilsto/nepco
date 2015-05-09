@@ -143,3 +143,10 @@
     margin: 1em 0;
     padding: 0; 
  }
+
+ .style_two h1 span .border {
+  height: 6px;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 0px!important;
+}

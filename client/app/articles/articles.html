@@ -8,7 +8,7 @@
             <input style="margin-top:-12px" type="text" class="form-control" ng-model="searchText">
             <h4>Performance</h4>
                 <div style="margin-top:-12px" range-slider min="minPerf" max="maxPerf" step="0.5" model-min="userMinPerf" model-max="userMaxPerf" decimal-places="1" showValues="true" ></div>
-            <h4>Prix</h4>
+            <h4>Prix</h4> <small style="float:right;margin-top:-40px;font-size:16px">{{meanPrice}}€ Moyen</small>
                 <div style="margin-top:-12px" range-slider min="minPrice" step="10" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" showValues="true"filter="currency:'€':0" ></div>
              <h4>Marque</h4>
             <ul style="margin-top:-12px">
