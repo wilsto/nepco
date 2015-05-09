@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-offset-1 col-md-10 ">
-        
+
         <h2 id="description" style="padding:0">{{article.brand | uppercase}} </h2>
         <div class="icons-work pull-right">
             <span class="fa fagold fa-2x fa-star"></span>
@@ -10,77 +10,116 @@
             <span class="fa fagold fa-2x fa-star"></span>
             <span class="fa fagold fa-2x fa-star"></span>
             <span class="fa fagold fa-2x fa-star-o"></span>
+            <br>
+            <span style="top:25px">
+              <a ng-href="/articleedit/{{article.EAN13}}" class="btn btn-success">Modifier cet article</a>
+              </span>
         </div>
+
         <h3 style="padding:0;">{{article.name}} -  
         <span class="text-muted" style="line-height: 50px;font-size:19px"> {{article.price}}€</span> </h3>
         <span style="line-height: 40px">EAN : {{article.EAN13 }} - Ref :{{article.seller }}</span>
         <hr>
         <div class="row">
-            <div class="col-md-2 col-xs-12">
-                <ul class="polaroids">
-                    <li><img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive" style="margin:auto"></li>
-                </ul>
+            <div class="col-md-4 col-xs-12">
+
+  <!-- Slide -->           
+<div >
+ 
+    <!-- main slider carousel -->
+    <div class="row">
+        <div class="col-md-12" id="slider">
+            
+                <div class="col-md-12" id="carousel-bounding-box">
+                    <div id="myCarousel" class="carousel slide">
+                        <!-- main slider carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item" data-slide-number="0">
+                                <img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive">
+                            </div>
+                            <div class="item" data-slide-number="1">
+                              <img ng-src="http://media.vertbaudet.com/images/3/87/AZ/3X_01700_0091_3.jpg" alt="Image" class="img-responsive">
+                            </div>
+                            <div class="item" data-slide-number="2">
+                                <img ng-src="http://media.vertbaudet.com/images/3/87/AZ/3X_01700_0091_4.jpg" alt="Image" class="img-responsive">
+                            </div>
+                            </div>
+                        </div>
+                        <!-- main slider carousel nav controls --> 
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+                    </div>
+                </div>
+
+        </div>
+    <!--/main slider carousel-->
+
+    <!-- thumb navigation carousel -->
+    <div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs">
+        
+            <!-- thumb navigation carousel items -->
+          <ul class="list-inline text-center">
+          <li style="padding:10px"> <a id="carousel-selector-0" class="selected">
+            <img ng-src="http://media.vertbaudet.com/images/3/87/BTP/3X_01700_0091.jpg" class="img-responsive">
+          </a></li>
+          <li style="padding:10px"> <a id="carousel-selector-1">
+            <img src="http://media.vertbaudet.com/images/3/87/ATP/3X_01700_0091_3.jpg" class="img-responsive">
+          </a></li>
+          <li style="padding:10px"> <a id="carousel-selector-2">
+            <img src="http://media.vertbaudet.com/images/3/87/ATP/3X_01700_0091_4.jpg" class="img-responsive">
+          </a></li>
+            </ul>
+        
+    </div>
+
+</div>
+        <!-- End Slide --> 
+
                 <a ng-href="{{article.brandLink}}" target="_blank">
                     <div style="padding:5px;text-align:center;border:1px lightgrey solid">
                         <span class="text-info">Voir le site de la marque</span>
                     </div>
                 </a>
-                <h4 style="padding-top:20px"><u>Le plus produit</u></h4>
+                <h4 style="font-variant: small-caps;padding-top:20px"><u>Le plus produit</u></h4>
                 <small>
                         Cet encart permet de mettre en avant un point de qualité non pris en compte dans le cahier des charges KIPPME mais important au regard de l’information client. Le texte est rédigé ou validé par KIPPME.com
                         </small>
-                    <div style="margin-top:25px;margin-bottom:25px;text-align:center;">
-                        <a href="#description"><i class="fa  fa-envelope"></i> Nous contacter au sujet de la qualité de cet article</a>
-                    </div>
-                                                    
+                <div style="margin-top:25px;margin-bottom:25px;text-align:center;">
+                    <a href="#description"><i class="fa  fa-envelope"></i> Nous contacter au sujet de la qualité de cet article</a>
+                </div>
+
             </div>
             <div class="col-md-8 col-xs-12">
 
 
-                <div style="padding-top:20px">
+                <div>
+                    <h4 style="font-variant: small-caps;"><u>Le profil performance (PP)</u></h4>
                     <highchart id="chart1" config="chartPolar"></highchart>
                 </div>
 
-                <div id="clients" style="padding-top:20px">
+                <div id="clients">
+                    <h4 style="font-variant: small-caps;"><u>Question taille</u></h4>
                     <highchart id="chart2" config="chartBar"></highchart>
                 </div>
-                    <div style="margin-top:25px;margin-bottom:25px;text-align:center;">
-                        <a href="#description"><i class="fa  fa-comment-o"></i> J'ai essayé cet article et je souhaite partager mon avis</a>
-                    </div>
+                <div style="margin-top:25px;margin-bottom:25px;text-align:center;">
+                    <a href="#description"><i class="fa  fa-comment-o"></i> J'ai essayé cet article et je souhaite partager mon avis</a>
+                </div>
 
             </div>
-            <div class="col-md-2 col-xs-12">
-                <div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
-                    <ul class="nav bs-docs-sidenav">
-                        <li style="padding-bottom:25px">
+        </div>
 
-                            <a ng-href="/articleedit/{{article.EAN13}}" class="btn btn-success">Modifier cet article</a>
-
-                        </li>
-                        <li>
-                            <a href="#description"><i class="fa  fa-bolt"></i> Description</a>
-                        </li>
-                        <li>
-
-                            <a href="#clients"><i class="fa fa-group"></i> Avis clients</a></li>
-                        <li>
-
-                            <a href="#location"><i class="fa fa-map-marker"></i> Où trouver</a>
-                        </li>
-                        <li>
-                                                <div style="margin-top:35px;margin-left:15px">
-<small style="margin-left:-15px">Partager cette page</small><br/>
-                <div class="social-likes social-likes_vertical " style="margin-top:15px" data-counters="no">
-                    <div class="facebook" title="Share link on Facebook">Facebook</div>
-                    <div class="twitter" title="Share link on Twitter">Twitter</div>
-                    <div class="plusone" title="Share link on Google+">Google+</div>
-                    <div class="pinterest" title="Share image on Pinterest" data-media="urlpinterest">Pinterest</div>
-                </div>
-                </div>
-                        </li>
-                    </ul>
-                </div>
-                
+        <div class="row">
+            <div class=" col-md-12 col-xs-12 text-center">
+                                <div class="social-likes " style="margin-top:15px" data-counters="no">
+                                    <small style="margin-left:-15px">Partager cette page</small>
+                                    <div class="facebook" title="Share link on Facebook">Facebook</div>
+                                    <div class="twitter" title="Share link on Twitter">Twitter</div>
+                                    <div class="plusone" title="Share link on Google+">Google+</div>
+                                    <div class="pinterest" title="Share image on Pinterest" data-media="urlpinterest">Pinterest</div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
             </div>
         </div>
     </div>
