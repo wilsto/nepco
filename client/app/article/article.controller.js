@@ -50,7 +50,7 @@ angular.module('nepcoApp')
                             }
                         },
                         size: {
-                            height: 480
+                            height: 490
                         },
                         title: {
                             text: ''
