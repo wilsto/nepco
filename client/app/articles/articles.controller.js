@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('nepcoApp')
-    .controller('ArticlesCtrl', function($scope, $http) {
+    .controller('ArticlesCtrl', function($scope, $rootScope, $http) {
+
+
         $scope.searchText = '';
         $scope.searchBrand = [];
 

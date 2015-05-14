@@ -52,6 +52,7 @@
       <link rel="stylesheet" href="components/css/fonts/icons/font-awesome.css">
       <link rel="stylesheet" href="components/css/fonts/icons/font-awesome.min.css">
       <link rel="stylesheet" href="components/css/ie/ie.css">
+      <link rel="stylesheet" href="components/css/index.css">
       <link rel="stylesheet" href="components/css/nav/megafish.css">
       <link rel="stylesheet" href="components/css/scrollbar/jquery.mCustomScrollbar.css">
       <link rel="stylesheet" href="components/css/skins/orange/orange.css">
@@ -67,10 +68,28 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Add your site or application content here -->
+    <div class="wrap push">
+      
+<a href="#menu" class="menu-link"><i class=" fa fa-bars"></i></a>
     <div ui-view=""></div>
-
+    </div>
+<nav id="menu" class="panel-slide" role="navigation" ng-controller="slideCtrl">
+    <ul>
+        <li ng-show="isLoggedIn()" class="text-center">
+        <a href="/settings">
+            <img alt="" ng-src="assets/images/avatars/{{getCurrentUser().name}}.png" class="img-responsive" err-src="assets/images/avatars/avatar.png"/>
+            <span class="username">{{getCurrentUser().name}} </span>
+            </a>
+        </li>
+        <li ng-hide="isLoggedIn()"><a href="/login"><span style="padding-right:10px"><i class="fa fa-sign-in"></i></span> Se connecter</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/signup"><span style="padding-right:10px"><i class="fa fa-flash"></i></span> S'enregistrer</a></li>
+        <li ng-show="isLoggedIn()"><a href="#" ng-click="logout()"><span style="padding-right:10px"><i class="fa fa-sign-out"></i></span> Se déconnecter</a></li>
+        <li ng-show="isLoggedIn()"><a href="/settings"><span style="padding-right:10px"><i class="fa fa-cog"></i></span> Mon profil</a></li>
+        <li ng-show="isAdmin()"><a href="/admin"><span style="padding-right:10px"><i class="fa fa-users"></i></span> Gestion utilisateurs</a></li>
+        <li ng-show="isAdmin()"><a href="/admin"><span style="padding-right:10px"><i class="fa fa-check-circle"></i></span> Gestion articles</a></li>
+    </ul>
+</nav>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -121,6 +140,7 @@
       <script src="bower_components/social-likes/src/social-likes.js"></script>
       <script src="bower_components/angular-rangeslider/angular.rangeSlider.js"></script>
       <script src="bower_components/angular-advanced-searchbox/dist/angular-advanced-searchbox-tpls.js"></script>
+      <script src="bower_components/bigSlide/dist/bigSlide.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -142,6 +162,7 @@
           <script src="app/articleedit/articleedit.js"></script>
           <script src="app/articles/articles.controller.js"></script>
           <script src="app/articles/articles.js"></script>
+          <script src="app/errSrc/errSrc.directive.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="app/myFilters/myFilters.filter.js"></script>
@@ -153,5 +174,10 @@
           <script src="components/socket/socket.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
+        <script>
+$(document).ready(function() {
+    $('.menu-link').bigSlide();
+});
+</script>
 </body>
 </html>

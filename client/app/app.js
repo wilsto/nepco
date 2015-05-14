@@ -65,6 +65,10 @@ angular.module('nepcoApp', [
         'link': '/blog'
     }];
 
+    $rootScope.isLoggedIn = Auth.isLoggedIn;
+    $rootScope.isAdmin = Auth.isAdmin;
+    $rootScope.getCurrentUser = Auth.getCurrentUser;
+
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function(event, next) {
         Auth.isLoggedInAsync(function(loggedIn) {
@@ -73,4 +77,16 @@ angular.module('nepcoApp', [
             }
         });
     });
+})
+
+
+.controller('slideCtrl', function($scope, $rootScope, $http, Auth, $location) {
+
+    $scope.currentUser = Auth.getCurrentUser();
+    console.log('$scope.currentUser', $scope.currentUser);
+
+    $scope.logout = function() {
+        Auth.logout();
+        $location.path('/');
+    };
 });

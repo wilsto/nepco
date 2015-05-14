@@ -1,0 +1,127 @@
+.panel-slide {
+    position: fixed;
+    left: -15.625em; /*right or left and the width of your navigation panel-slide*/
+    width: 15.625em; /*should match the above value*/
+    z-index: 99999999;
+}
+
+.wrap {
+  position: relative;
+}
+
+
+/*
+Masthead
+======================================
+*/
+
+.masthead {
+  background: #FFB43F;
+  color: #fff;
+  position: relative;
+}
+
+.menu-link {
+  position: absolute;
+  font-size: 1.2em;
+  top:10px;
+  z-index: 999999;
+}
+
+.menu-link:link,
+.menu-link:visited {
+  color: #fff;
+  background: rgba(0, 0, 0, .4);
+  padding: .2em .4em;
+}
+
+.menu-link:hover,
+.menu-link:active {
+  color: #FFB43F;
+  background: rgba(0, 0, 0, .6);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.125em;
+  margin: .5em 0;
+}
+
+.btn-list {
+  margin: 3em 0;
+  text-align: center;
+}
+
+.btn-list li {
+  display: inline-block;
+}
+
+.btn-list li:first-of-type {
+  margin-right: 1em;
+}
+
+.btn {
+  padding: 1em .5em;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.btn:link,
+.btn:visited {
+  background: #FFB43F;
+  color: #fff;
+}
+
+.btn:hover,
+.btn:active {
+  background: #16a085;
+}
+
+
+/*
+Nav Panel
+======================================
+*/
+
+.panel-slide {
+  background: #ce8c14;
+  z-index: 9999;
+  position: fixed;
+  left: -15.625em; /*or width of your navigation panel-slide*/
+  width: 15.625em; /*should match the above value*/
+}
+
+.panel-slide ul {
+  border-top: 2px solid #FFB43F;
+}
+
+.panel-slide a {
+  display: block;
+  border-bottom: 2px solid #FFB43F;
+  padding: 1em;
+}
+
+.panel-slide a:link,
+.panel-slide a:visited {
+  color: #fff;
+}
+
+.panel-slide a:hover,
+.panel-slide a:active {
+  background: #FFB43F;
+}
+
+.nav-icon {
+  margin-right: 6px;
+}
+
+/*
+code
+-----------------------------------
+*/
+
+pre {
+  background-color: #ECF0F1;
+  padding: 1em;
+  font-size: .875em;
+}
