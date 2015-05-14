@@ -33,15 +33,9 @@
                             <div class="col-md-12" id="carousel-bounding-box">
                                 <div id="myCarousel" class="carousel slide">
                                     <!-- main slider carousel items -->
-                                    <div class="carousel-inner">
-                                        <div class="active item" data-slide-number="0">
-                                            <img ng-src="{{article.photoLink}}" alt="Image" class="img-responsive">
-                                        </div>
-                                        <div class="item" data-slide-number="1">
-                                            <img ng-src="http://media.vertbaudet.com/images/3/87/AZ/3X_01700_0091_3.jpg" alt="Image" class="img-responsive">
-                                        </div>
-                                        <div class="item" data-slide-number="2">
-                                            <img ng-src="http://media.vertbaudet.com/images/3/87/AZ/3X_01700_0091_4.jpg" alt="Image" class="img-responsive">
+                                    <div class="carousel-inner" ng-init="itemactive=1">
+                                        <div class="item" ng-class="{'active':itemactive===$index}" data-slide-number="$index" ng-repeat="photo in photos | orderBy:'version':false">
+                                            <cl-image public-id="{{photo.public_id}}" class=" img-responsive" height="500" crop="fit" quality="80" format="jpg" />
                                         </div>
                                     </div>
                                 </div>
@@ -59,19 +53,9 @@
 
                         <!-- thumb navigation carousel items -->
                         <ul class="list-inline text-center">
-                            <li style="padding:10px">
-                                <a id="carousel-selector-0" class="selected">
-                                    <img ng-src="http://media.vertbaudet.com/images/3/87/BTP/3X_01700_0091.jpg" class="img-responsive">
-                                </a>
-                            </li>
-                            <li style="padding:10px">
-                                <a id="carousel-selector-1">
-                                    <img src="http://media.vertbaudet.com/images/3/87/ATP/3X_01700_0091_3.jpg" class="img-responsive">
-                                </a>
-                            </li>
-                            <li style="padding:10px">
-                                <a id="carousel-selector-2">
-                                    <img src="http://media.vertbaudet.com/images/3/87/ATP/3X_01700_0091_4.jpg" class="img-responsive">
+                            <li ng-repeat="photo in photos | orderBy:'version':false">
+                                <a id="carousel-selector-{{$index}}" ng-click="itemactive=$index">
+                                    <cl-image public-id="{{photo.public_id}}" class="thumbnail" height="100" crop="fit" quality="80" format="jpg" />
                                 </a>
                             </li>
                         </ul>

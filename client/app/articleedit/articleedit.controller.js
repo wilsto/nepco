@@ -7,17 +7,28 @@ angular.module('nepcoApp')
         $scope.article.materials = [];
         $scope.article.presence = [];
 
-        photoServices.photos({}, function(v) {
-            $rootScope.serviceCalled = true;
-            $scope.photos = v.resources;
-            console.log('$scope.photos', $scope.photos);
-        });
+        $scope.uploadPhotos = function() {
+
+            cloudinary.openUploadWidget({
+                    cloud_name: 'imguploadstorage',
+                    upload_preset: 'kippme',
+                    folder: $scope.article.brand,
+                    tags: $scope.article.EAN13,
+                },
+                function(error, result) {
+                    console.log(error, result);
+                    $scope.loadPhotos();
+                });
+
+        };
+
         $scope.load = function() {
             if ($stateParams.id) {
 
                 $scope.article.departement = undefined;
                 $http.get('/api/articles/' + $stateParams.id).success(function(article) {
                     $scope.article = article[0];
+                    $scope.loadPhotos();
                 });
             } else {
                 $scope.article = {
@@ -27,6 +38,30 @@ angular.module('nepcoApp')
             }
         };
         $scope.load();
+
+        $scope.loadPhotos = function() {
+            if ($scope.article.EAN13 && $scope.article.EAN13.length > 0) {
+                var url = $.cloudinary.url($scope.article.EAN13, {
+                    format: 'json',
+                    type: 'list'
+                });
+
+                $scope.photos = [];
+                $http.get(url + "?" + Math.ceil(new Date().getTime() / 1000)).success(function(photos) {
+                    $scope.photos = photos.resources;
+                    console.log('$scope.photos', $scope.photos);
+                    if ($scope.photos.length > 0) {
+                        $scope.article.photoLink = 'http://res.cloudinary.com/imguploadstorage/image/upload/c_fit,h_150,q_80/v1/' + $scope.photos[0].public_id + '.' + $scope.photos[0].format;
+                    }
+                });
+            } else {
+                $scope.photos = [];
+            }
+        }
+
+        $scope.$watch('article.EAN13', function() {
+            $scope.loadPhotos();
+        });
 
         $scope.save = function() {
             if (typeof $scope.article._id === 'undefined') {

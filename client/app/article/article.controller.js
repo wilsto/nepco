@@ -163,10 +163,28 @@ angular.module('nepcoApp')
 
 
                     $('.social-likes').socialLikes();
+
+                    $scope.loadPhotos();
                 });
             }
         };
         $scope.load();
+
+        $scope.loadPhotos = function() {
+            if ($scope.article.EAN13 && $scope.article.EAN13.length > 0) {
+                var url = $.cloudinary.url($scope.article.EAN13, {
+                    format: 'json',
+                    type: 'list'
+                });
+
+                $scope.photos = [];
+                $http.get(url + "?" + Math.ceil(new Date().getTime() / 1000)).success(function(photos) {
+                    $scope.photos = photos.resources;
+                });
+            } else {
+                $scope.photos = [];
+            }
+        }
 
         $scope.save = function() {
             if (typeof $scope.article._id === 'undefined') {

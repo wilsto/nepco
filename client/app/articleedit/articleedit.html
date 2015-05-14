@@ -1,27 +1,28 @@
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title">List Modification : {{listName}}</h3>
-        </div>
-        <div class="modal-body">
- <div class="pull-right">
-            <button type='button' class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">        Previous    </button>
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">List Modification : {{listName}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="pull-right">
+            <button type='button' class="btn btn-default" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1"> Previous </button>
             {{currentPage+1}}/{{numberOfPages()}}
-            <button type='button' class="btn btn-default"  ng-disabled="currentPage >= items.length/pageSize - 1" ng-click="currentPage=currentPage+1">        Next    </button>
-               </div>
-            <ul>
-                <li ng-repeat="item in items | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
-  <a data-toggle="confirmation" data-singleton="true"><i class="btn fa fa-trash-o" ng-click="delete($index)"></i></a> {{ item }}                </li>
-            </ul>
+            <button type='button' class="btn btn-default" ng-disabled="currentPage >= items.length/pageSize - 1" ng-click="currentPage=currentPage+1"> Next </button>
         </div>
-       <div class="modal-body">
-            New: <input type="text" class="form-control" ng-model="newItem" style="width:75%;display:inline-block">
-            <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
-        </div>
-        <div class="modal-footer">
-            <button type='button' class="btn btn-warning pull-left"  ng-click="cancel()">Cancel</button>
-            <button  type='button' class="btn btn-primary" ng-click="ok()">Close and Save</button>
-        </div>
-    </script>
+        <ul>
+            <li ng-repeat="item in items | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+                <a data-toggle="confirmation" data-singleton="true"><i class="btn fa fa-trash-o" ng-click="delete($index)"></i></a> {{ item }} </li>
+        </ul>
+    </div>
+    <div class="modal-body">
+        New:
+        <input type="text" class="form-control" ng-model="newItem" style="width:75%;display:inline-block">
+        <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
+    </div>
+    <div class="modal-footer">
+        <button type='button' class="btn btn-warning pull-left" ng-click="cancel()">Cancel</button>
+        <button type='button' class="btn btn-primary" ng-click="ok()">Close and Save</button>
+    </div>
+</script>
 <div ng-include="'components/navbar/navbar.html'">
 </div>
 <div class="row">
@@ -52,7 +53,7 @@
                         <input type="text" placeholder="" class="form-control" ng-model="article.EAN13" ng-required/>
                     </div>
                 </div>
-                                <div class="form-group">
+                <div class="form-group">
                     <label class="col-md-3 control-label">Ref Vendeur</label>
                     <div class="col-md-9">
                         <input type="text" placeholder="" class="form-control" ng-model="article.seller" />
@@ -63,137 +64,17 @@
                     <div class="col-md-9">
                         <input type="text" placeholder="" class="form-control" ng-model="article.photoLink" />
 
-<a href="#" id="upload_widget_opener">Upload multiple images</a>
-<div id="direct_upload" 
-    ng-file-drop
-    ng-file-drag-over-class="dragOverClass($event)"
-    ng-model="files"
-    ng-multiple="true">
-    <h1>New Photo</h1>
-    <h2>Direct upload from the browser with Angular File Upload</h2>
-    <p>You can also drag and drop an image file into the dashed area.</p>
-    <form>
-        <div class="form_line">
-            <label path="title">Title:</label>
-            <div class="form_controls">
-                <input type="text" class="form-control" placeholder="Title" ng-model="title"/>
-            </div>
-        </div>
-        <div class="form_line">
-            <label>Image:</label>
-            <div class="form_controls">
-                <div class="upload_button_holder">
-                    <div href="#" class="upload_button" ng-file-select ng-multiple="true" title="upload" resetOnClick="true" ng-model="files">Upload</div>
-                </div>
-                
-            </div>
-        </div>
-    </form>
-    <h2>Status</h2>
-    <div class="file" ng-repeat="file in files">
-        <h3>{{file.name}}</h3>
-        <div class="status">{{file.status}}</div>
-        <div class="progress-bar">
-          <div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>
-        </div>
-        <div class="form_line">
-            <div class="form_controls">
-                <div class="preview"></div>
-            </div>
-        </div>
-        <div class="info">
-          <table>
-            <tr ng-repeat="(key, value) in file.result">
-              <td> {{key}} </td> <td> {{ value }} </td>
-            </tr>
-          </table>
-        </div>
-    </div>
-    
-</div>
-<div class="photos">
-  <p ng-if="photos.length === 0 || !photos">No photos were added yet.</p>
-  <div class="photo" ng-repeat="photo in photos | orderBy:'version':true">
-    <h2>{{photo.context.custom.photo}}</h2>
-    <a cl-href="{{photo.public_id}}" format="jpg" target="_blank">
-      <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" width="150" height="150" crop="fit" quality="80" format="jpg"/>
-    </a>
-
-    <div class="less_info">
-      <button class="toggle_info" style="cursor: true" ng-click="shown=true" ng-init="shown=false" ng-show="shown === false">Show transformations</button>
-    </div>
-    <div class="more_info" ng-show="shown === true">
-      <button class="toggle_info" ng-click="shown=false">Hide transformations</button>
-      <table class="thumbnails">
-        <tr>
-          <td>
-            <div class="thumbnail_holder">
-              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="fill" height="150" width="150" radius="10" format="jpg"/>
-            </div>
-            <table class="info">
-              <tr><td>crop</td><td>fill</td></tr>
-              <tr><td>width</td><td>150</td></tr>
-              <tr><td>height</td><td>150</td></tr>
-              <tr><td>radius</td><td>10</td></tr>
-            </table>
-            <br/>
-          </td>
-          <td>
-            <div class="thumbnail_holder">
-              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="scale" height="150" width="150" format="jpg"/>
-            </div>
-            <table class="info">
-              <tr><td>crop</td><td>scale</td></tr>
-              <tr><td>width</td><td>150</td></tr>
-              <tr><td>height</td><td>150</td></tr>
-            </table>
-            <br/>
-          </td>
-          <td>
-            <div class="thumbnail_holder">
-              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="fit" height="150" width="150" format="jpg"/>
-            </div>
-            <table class="info">
-              <tr><td>crop</td><td>fit</td></tr>
-              <tr><td>width</td><td>150</td></tr>
-              <tr><td>height</td><td>150</td></tr>
-            </table>
-            <br/>
-          </td>
-          <td>
-            <div class="thumbnail_holder">
-              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="thumb" gravity="face" height="150" width="150" format="jpg"/>
-            </div>
-            <table class="info">
-              <tr><td>crop</td><td>thumb</td></tr>
-              <tr><td>gravity</td><td>face</td></tr>
-              <tr><td>width</td><td>150</td></tr>
-              <tr><td>height</td><td>150</td></tr>
-            </table>
-            <br/>
-          </td>
-          <td>
-            <div class="thumbnail_holder">
-              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" angle="20" format="jpg">
-                <cl-transformation height="150" width="150" crop="fill" gravity="north" effect="sepia" radius="20"/>
-              </cl-image>
-            </div>
-            <table class="info">
-              <tr><td>crop</td><td>fill</td></tr>
-              <tr><td>effect</td><td>sepia</td></tr>
-              <tr><td>gravity</td><td>north</td></tr>
-              <tr><td>width</td><td>150</td></tr>
-              <tr><td>height</td><td>150</td></tr>
-              <tr><td>then</td><td></td></tr>
-              <tr><td>angle</td><td>20</td></tr>
-            </table>
-            <br/>
-          </td>
-      </tr>
-      </table>
-    </div>
-  </div>
-</div>
+                        <a class="btn btn-default" href="#" id="upload_widget_opener" ng-click="uploadPhotos()">Charger des photos de l'article</a>
+                        <div class="photos" style="padding-top:15px">
+                            <small class="text-warning" ng-if="photos.length === 0 || !photos">Aucune photo chargée pour l'instant</small class="text-danger">
+                          <ul  class="list-inline">
+                              <li ng-repeat="photo in photos | orderBy:'version':false">
+                                <a cl-href="{{photo.public_id}}" format="jpg" target="_blank">
+                                  <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" height="150" crop="fit" quality="80" format="jpg"/>
+                                </a>
+                              </li>
+                          </ul>
+                        </div>
 
                     </div>
                 </div>

@@ -27,9 +27,11 @@ angular.module('nepcoApp', [
     return {
         // Add authorization token to headers
         request: function(config) {
-            config.headers = config.headers || {};
-            if ($cookieStore.get('token')) {
-                config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+            if (config.url.indexOf('cloudinary') < 0) {
+                config.headers = config.headers || {};
+                if ($cookieStore.get('token')) {
+                    config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+                }
             }
             return config;
         },
@@ -48,6 +50,10 @@ angular.module('nepcoApp', [
 })
 
 .run(function($rootScope, $location, Auth) {
+
+    $.cloudinary.config().cloud_name = 'imguploadstorage';
+    $.cloudinary.config().upload_preset = 'kippme';
+
     $rootScope.menu = [{
         'title': 'Accueil',
         'link': '/',
@@ -83,7 +89,6 @@ angular.module('nepcoApp', [
 .controller('slideCtrl', function($scope, $rootScope, $http, Auth, $location) {
 
     $scope.currentUser = Auth.getCurrentUser();
-
 
     $scope.logout = function() {
         Auth.logout();
