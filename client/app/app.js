@@ -12,7 +12,8 @@ angular.module('nepcoApp', [
     'ui.bootstrap.datetimepicker',
     'highcharts-ng',
     'ui-rangeSlider',
-    'angular-advanced-searchbox'
+    'angularFileUpload',
+    'cloudinary'
 ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
         $urlRouterProvider
@@ -36,7 +37,6 @@ angular.module('nepcoApp', [
         // Intercept 401s and redirect you to login
         responseError: function(response) {
             if (response.status === 401) {
-                $location.path('/login');
                 // remove any stale tokens
                 $cookieStore.remove('token');
                 return $q.reject(response);
@@ -83,7 +83,7 @@ angular.module('nepcoApp', [
 .controller('slideCtrl', function($scope, $rootScope, $http, Auth, $location) {
 
     $scope.currentUser = Auth.getCurrentUser();
-    
+
 
     $scope.logout = function() {
         Auth.logout();

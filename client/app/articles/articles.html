@@ -3,6 +3,44 @@
 <div class="container" >
     <div class="row">
         <div class="well well-sm col-md-2">
+                    <div class="bg-warning" style="margin:1px;margin-bottom:15px;padding:5px" ng-show="isAdmin()">
+             <small class="text-danger">Admin Only</small>
+            <a class="btn btn-primary" style="margin-top:5px;margin-left:20px;" href="/articleedit/">Créer un article</a>
+            <small style="margin-left:20px;"> Statut Article:</small>
+            <ul style="margin-bottom:5px;margin-left:20px;">
+                <li style="margin-left: 10px" >
+                    <a href="#" ng-click="addFilterStatus('Draft')">
+                        <input type="checkbox" class="inline-block" ng-model="isFilterStatus('Draft')">
+                        <small >Draft</small>
+                    </a>
+                </li>
+                <li style="margin-left: 10px" >
+                    <a href="#" ng-click="addFilterStatus('Pending')">
+                        <input type="checkbox" class="inline-block" ng-model="isFilterStatus('Pending')">
+                        <small >Pending</small>
+                    </a>
+                </li>
+                <li style="margin-left: 10px" >
+                    <a href="#" ng-click="addFilterStatus('Future')">
+                        <input type="checkbox" class="inline-block" ng-model="isFilterStatus('Future')">
+                        <small >Future</small>
+                    </a>
+                </li>
+                <li style="margin-left: 10px" >
+                    <a href="#" ng-click="addFilterStatus('Published')">
+                        <input type="checkbox" class="inline-block" ng-model="isFilterStatus('Published')">
+                        <small >Published</small>
+                    </a>
+                </li>
+                <li style="margin-left: 10px" >
+                    <a href="#" ng-click="addFilterStatus('Trash')">
+                        <input type="checkbox" class="inline-block" ng-model="isFilterStatus('Trash')">
+                        <small >Trash</small>
+                    </a>
+                </li>
+            </ul>
+            </div>                
+
             <strong style="padding-right:25px">Affiner par</strong>
             <h4>Mot-clé</h4>
             <input style="margin-top:-12px" type="text" class="form-control" ng-model="searchText">
@@ -15,20 +53,16 @@
                 <li style="margin-left: 10px" ng-repeat="brand in brands">
                     <a href="#" ng-click="addFilterBrand(brand)">
                         <input id="brand_{{brand}}" type="checkbox" class="inline-block" ng-model="isFilterBrand(brand)">
-                        <span >{{brand}}</span>
+                        <small >{{brand}}</small>
                     </a>
                 </li>
             </ul>
         </div>
 
         <div id="products" class="row list-group col-md-10" style="padding-left:25px">
-            <div class="well well-sm  col-xs-12 col-lg-12" style="padding-bottom:15px;border:1px #ccc solid; margin:15px" ng-show="isAdmin()">
-                <small class="text-danger">Admin Only</small>
-                <a class="btn btn-primary pull-right" href="/articleedit/">Créer un article</a>
-            </div>
-            <div class="item col-xs-12 col-lg-12" ng-repeat="article in articles">
+            <div class="item item-warning col-xs-12 col-lg-12" ng-repeat="article in articles" ng-class="'item-warning':article.status==='Draft'">
                 <a href="/article/{{article.EAN13}}"> 
-                    <div class="" style="border:1px #ccc solid; margin:5px">
+                    <div class="" >
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="pull-left" style="margin:5px">

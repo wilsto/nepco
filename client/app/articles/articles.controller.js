@@ -6,6 +6,7 @@ angular.module('nepcoApp')
 
         $scope.searchText = '';
         $scope.searchBrand = [];
+        $scope.searchStatus = ['Published'];
 
         // set available range
         $scope.minPerf = 0;
@@ -27,6 +28,15 @@ angular.module('nepcoApp')
         $scope.addFilterBrand = function(brandname) {
             $scope.searchBrand = _.xor($scope.searchBrand, [brandname]);
             $scope.filterArticles();
+        }
+
+        $scope.addFilterStatus = function(statusName) {
+            $scope.searchStatus = _.xor($scope.searchStatus, [statusName]);
+            $scope.filterArticles();
+        }
+
+        $scope.isFilterStatus = function(statusName) {
+            return _.contains($scope.searchStatus, statusName);
         }
 
         $scope.isFilterBrand = function(brandname) {

@@ -25,6 +25,10 @@
       <link rel="stylesheet" href="bower_components/social-likes/social-likes_classic.css" />
       <link rel="stylesheet" href="bower_components/angular-rangeslider/angular.rangeSlider.css" />
       <link rel="stylesheet" href="bower_components/angular-advanced-searchbox/dist/angular-advanced-searchbox.min.css" />
+      <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload.css" />
+      <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload-ui.css" />
+      <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload-noscript.css" />
+      <link rel="stylesheet" href="bower_components/blueimp-file-upload/css/jquery.fileupload-ui-noscript.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -87,7 +91,7 @@
         <li ng-show="isLoggedIn()"><a href="#" ng-click="logout()"><span style="padding-right:10px"><i class="fa fa-sign-out"></i></span> Se déconnecter</a></li>
         <li ng-show="isLoggedIn()"><a href="/settings"><span style="padding-right:10px"><i class="fa fa-cog"></i></span> Mon profil</a></li>
         <li ng-show="isAdmin()"><a href="/admin"><span style="padding-right:10px"><i class="fa fa-users"></i></span> Gestion utilisateurs</a></li>
-        <li ng-show="isAdmin()"><a href="/admin"><span style="padding-right:10px"><i class="fa fa-check-circle"></i></span> Gestion articles</a></li>
+        <li ng-show="isAdmin()"><a href="/articles"><span style="padding-right:10px"><i class="fa fa-check-circle"></i></span> Gestion articles</a></li>
     </ul>
 </nav>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -141,9 +145,36 @@
       <script src="bower_components/angular-rangeslider/angular.rangeSlider.js"></script>
       <script src="bower_components/angular-advanced-searchbox/dist/angular-advanced-searchbox-tpls.js"></script>
       <script src="bower_components/bigSlide/dist/bigSlide.js"></script>
+      <script src="bower_components/flow.js/dist/flow.js"></script>
+      <script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+      <script src="bower_components/blueimp-tmpl/js/tmpl.js"></script>
+      <script src="bower_components/blueimp-load-image/js/load-image.js"></script>
+      <script src="bower_components/blueimp-load-image/js/load-image-ios.js"></script>
+      <script src="bower_components/blueimp-load-image/js/load-image-orientation.js"></script>
+      <script src="bower_components/blueimp-load-image/js/load-image-meta.js"></script>
+      <script src="bower_components/blueimp-load-image/js/load-image-exif.js"></script>
+      <script src="bower_components/blueimp-load-image/js/load-image-exif-map.js"></script>
+      <script src="bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/cors/jquery.postmessage-transport.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/cors/jquery.xdr-transport.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-validate.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-audio.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-video.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-ui.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-jquery-ui.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.fileupload-angular.js"></script>
+      <script src="bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+      <script src="bower_components/cloudinary_js/js/jquery.cloudinary.js"></script>
+      <script src="bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
+      <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
+      <script src="http://widget.cloudinary.com/global/all.js"></script>
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
@@ -166,6 +197,7 @@
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="app/myFilters/myFilters.filter.js"></script>
+          <script src="app/photo/photo.service.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modal/modal.service.js"></script>

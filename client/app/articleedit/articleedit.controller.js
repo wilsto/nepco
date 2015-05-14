@@ -1,13 +1,17 @@
 'use strict';
 
 angular.module('nepcoApp')
-    .controller('ArticleeditCtrl', function($scope, $http, $stateParams, $location, $modal, $log) {
+    .controller('ArticleeditCtrl', function($scope, $http, $stateParams, $location, $modal, $log, photoServices) {
 
         $scope.article = {};
         $scope.article.materials = [];
         $scope.article.presence = [];
 
-
+        photoServices.photos({}, function(v) {
+            $rootScope.serviceCalled = true;
+            $scope.photos = v.resources;
+            console.log('$scope.photos', $scope.photos);
+        });
         $scope.load = function() {
             if ($stateParams.id) {
 
@@ -49,7 +53,7 @@ angular.module('nepcoApp')
                 function(response) {
                     $scope[listName.substring(0, 1).toLowerCase() + listName.substring(1) + 's'] = (response.data[0]) ? response.data[0].list : [];
                 }, function() {
-                    
+
                 }
             );
         };

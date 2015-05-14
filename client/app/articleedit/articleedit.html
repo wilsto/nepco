@@ -29,21 +29,172 @@
         <form name="form.myForm" class="form-horizontal" role="form" action="#">
             <div class="form-body">
                 <div class="form-group">
+                    <label class="col-md-3 control-label">Marque</label>
+                    <div class="col-md-9">
+                        <ui-select ng-model="article.brand" theme="bootstrap" ng-disabled="disabled" reset-search-input="true" style="width: 75%;display: inline-block;">
+                            <ui-select-match placeholder="Entrer une marque...">{{article.brand}}</ui-select-match>
+                            <ui-select-choices repeat="brand in brands  | filter: $select.search track by $index" refresh="refresh($select.search, 'brand')" refresh-delay="0">
+                                <div ng-bind-html="brand | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <button type='button' class="btn btn-default" ng-click="open(brands, 'brand')" ng-show="isAdmin()">Modify List</button>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-md-3 control-label">Dénomination article</label>
                     <div class="col-md-9">
                         <input type="text" placeholder="" class="form-control" ng-model="article.name" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Photo</label>
-                    <div class="col-md-9">
-                        <input type="text" placeholder="" class="form-control" ng-model="article.photoLink" />
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-md-3 control-label">EAN 13</label>
                     <div class="col-md-9">
                         <input type="text" placeholder="" class="form-control" ng-model="article.EAN13" ng-required/>
+                    </div>
+                </div>
+                                <div class="form-group">
+                    <label class="col-md-3 control-label">Ref Vendeur</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.seller" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Photo</label>
+                    <div class="col-md-9">
+                        <input type="text" placeholder="" class="form-control" ng-model="article.photoLink" />
+
+<a href="#" id="upload_widget_opener">Upload multiple images</a>
+<div id="direct_upload" 
+    ng-file-drop
+    ng-file-drag-over-class="dragOverClass($event)"
+    ng-model="files"
+    ng-multiple="true">
+    <h1>New Photo</h1>
+    <h2>Direct upload from the browser with Angular File Upload</h2>
+    <p>You can also drag and drop an image file into the dashed area.</p>
+    <form>
+        <div class="form_line">
+            <label path="title">Title:</label>
+            <div class="form_controls">
+                <input type="text" class="form-control" placeholder="Title" ng-model="title"/>
+            </div>
+        </div>
+        <div class="form_line">
+            <label>Image:</label>
+            <div class="form_controls">
+                <div class="upload_button_holder">
+                    <div href="#" class="upload_button" ng-file-select ng-multiple="true" title="upload" resetOnClick="true" ng-model="files">Upload</div>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+    <h2>Status</h2>
+    <div class="file" ng-repeat="file in files">
+        <h3>{{file.name}}</h3>
+        <div class="status">{{file.status}}</div>
+        <div class="progress-bar">
+          <div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+        </div>
+        <div class="form_line">
+            <div class="form_controls">
+                <div class="preview"></div>
+            </div>
+        </div>
+        <div class="info">
+          <table>
+            <tr ng-repeat="(key, value) in file.result">
+              <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>
+          </table>
+        </div>
+    </div>
+    
+</div>
+<div class="photos">
+  <p ng-if="photos.length === 0 || !photos">No photos were added yet.</p>
+  <div class="photo" ng-repeat="photo in photos | orderBy:'version':true">
+    <h2>{{photo.context.custom.photo}}</h2>
+    <a cl-href="{{photo.public_id}}" format="jpg" target="_blank">
+      <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" width="150" height="150" crop="fit" quality="80" format="jpg"/>
+    </a>
+
+    <div class="less_info">
+      <button class="toggle_info" style="cursor: true" ng-click="shown=true" ng-init="shown=false" ng-show="shown === false">Show transformations</button>
+    </div>
+    <div class="more_info" ng-show="shown === true">
+      <button class="toggle_info" ng-click="shown=false">Hide transformations</button>
+      <table class="thumbnails">
+        <tr>
+          <td>
+            <div class="thumbnail_holder">
+              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="fill" height="150" width="150" radius="10" format="jpg"/>
+            </div>
+            <table class="info">
+              <tr><td>crop</td><td>fill</td></tr>
+              <tr><td>width</td><td>150</td></tr>
+              <tr><td>height</td><td>150</td></tr>
+              <tr><td>radius</td><td>10</td></tr>
+            </table>
+            <br/>
+          </td>
+          <td>
+            <div class="thumbnail_holder">
+              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="scale" height="150" width="150" format="jpg"/>
+            </div>
+            <table class="info">
+              <tr><td>crop</td><td>scale</td></tr>
+              <tr><td>width</td><td>150</td></tr>
+              <tr><td>height</td><td>150</td></tr>
+            </table>
+            <br/>
+          </td>
+          <td>
+            <div class="thumbnail_holder">
+              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="fit" height="150" width="150" format="jpg"/>
+            </div>
+            <table class="info">
+              <tr><td>crop</td><td>fit</td></tr>
+              <tr><td>width</td><td>150</td></tr>
+              <tr><td>height</td><td>150</td></tr>
+            </table>
+            <br/>
+          </td>
+          <td>
+            <div class="thumbnail_holder">
+              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" crop="thumb" gravity="face" height="150" width="150" format="jpg"/>
+            </div>
+            <table class="info">
+              <tr><td>crop</td><td>thumb</td></tr>
+              <tr><td>gravity</td><td>face</td></tr>
+              <tr><td>width</td><td>150</td></tr>
+              <tr><td>height</td><td>150</td></tr>
+            </table>
+            <br/>
+          </td>
+          <td>
+            <div class="thumbnail_holder">
+              <cl-image public-id="{{photo.public_id}}" class="thumbnail inline" angle="20" format="jpg">
+                <cl-transformation height="150" width="150" crop="fill" gravity="north" effect="sepia" radius="20"/>
+              </cl-image>
+            </div>
+            <table class="info">
+              <tr><td>crop</td><td>fill</td></tr>
+              <tr><td>effect</td><td>sepia</td></tr>
+              <tr><td>gravity</td><td>north</td></tr>
+              <tr><td>width</td><td>150</td></tr>
+              <tr><td>height</td><td>150</td></tr>
+              <tr><td>then</td><td></td></tr>
+              <tr><td>angle</td><td>20</td></tr>
+            </table>
+            <br/>
+          </td>
+      </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,19 +206,7 @@
                                 <div ng-bind-html="collectionType | highlight: $select.search"></div>
                             </ui-select-choices>
                         </ui-select>
-                        <button type='button' class="btn btn-default" ng-click="open(collectionTypes, 'collectionType')">Modify List</button>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Marque</label>
-                    <div class="col-md-9">
-                        <ui-select ng-model="article.brand" theme="bootstrap" ng-disabled="disabled" reset-search-input="true" style="width: 75%;display: inline-block;">
-                            <ui-select-match placeholder="Entrer une marque...">{{article.brand}}</ui-select-match>
-                            <ui-select-choices repeat="brand in brands  | filter: $select.search track by $index" refresh="refresh($select.search, 'brand')" refresh-delay="0">
-                                <div ng-bind-html="brand | highlight: $select.search"></div>
-                            </ui-select-choices>
-                        </ui-select>
-                        <button type='button' class="btn btn-default" ng-click="open(brands, 'brand')">Modify List</button>
+                        <button type='button' class="btn btn-default" ng-click="open(collectionTypes, 'collectionType')" ng-show="isAdmin()">Modify List</button>
                     </div>
                 </div>
                 <div class="form-group">
@@ -85,15 +224,10 @@
                                 <div ng-bind-html="category | highlight: $select.search"></div>
                             </ui-select-choices>
                         </ui-select>
-                        <button type='button' class="btn btn-default" ng-click="open(categorys, 'category')">Modify List</button>
+                        <button type='button' class="btn btn-default" ng-click="open(categorys, 'category')" ng-show="isAdmin()">Modify List</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Ref Vendeur</label>
-                    <div class="col-md-9">
-                        <input type="text" placeholder="" class="form-control" ng-model="article.seller" />
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <label class="col-md-3 control-label">Prix</label>
                     <div class="col-md-9">
@@ -101,7 +235,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">Ref Nepcode</label>
+                    <label class="col-md-3 control-label">Statut</label>
                     <div class="col-md-9">
                         <input type="text" placeholder="" class="form-control" ng-model="article.nepcodeRef" />
                     </div>
