@@ -53,7 +53,7 @@ angular.module('nepcoApp', [
         'link': '/',
     }, {
         'title': 'Nos Missions',
-        'link': '/mission'
+        'link': '/about'
     }, {
         'title': 'Les Articles',
         'link': '/articles'
