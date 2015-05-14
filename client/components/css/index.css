@@ -60,23 +60,6 @@ Masthead
   margin-right: 1em;
 }
 
-.btn {
-  padding: 1em .5em;
-  text-align: center;
-  border-radius: 6px;
-}
-
-.btn:link,
-.btn:visited {
-  background: #FFB43F;
-  color: #fff;
-}
-
-.btn:hover,
-.btn:active {
-  background: #16a085;
-}
-
 
 /*
 Nav Panel

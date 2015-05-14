@@ -41,11 +41,13 @@ User.find({}).remove(function() {
         name: 'Verbaudet User',
         email: 'verbaudet@kippme.com',
         role: 'brand-operator',
+        brand: 'Verbaudet',
         password: 'kippme'
     }, {
         provider: 'local',
         name: 'Zara User',
         email: 'zara@kippme.com',
+        brand: 'Zara',
         role: 'brand-operator',
         password: 'kippme'
     }, {

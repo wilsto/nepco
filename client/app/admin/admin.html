@@ -8,7 +8,7 @@
 		<button class="btn btn-primary" ng-show="edit===true" ng-click="">Save User</button>
 	</div>
 	<div>
-		Search : <input type="text" ng-model="searchFilter" ng-init="searchFilter=null">
+		Filtrer : <input type="text" ng-model="searchFilter" ng-init="searchFilter=null" class="form-control" style="width:250px;display:inline-block">
 	</div>
 
 <div style="border:1px solid black;padding:15px;padding-top:0px;margin:50px" ng-show="edit===true">
@@ -16,7 +16,7 @@
 			<div class="row">
 	
 			<div class="col-md-12"> 
-				<h3>Enter User Information</h3>
+				<h3>Entrer User Information</h3>
 				<div class="row">
 					<div class="col-md-4"> 
 						<p class="input-group">
@@ -55,18 +55,18 @@
 		</div>
 		</form>
 </div>
-<table class="table table-hover members-table middle-align ng-scope">
+<table class="table table-hover members-table middle-align ng-scope" style="margin-top:25px">
 	<thead>
 		<tr>
 			<th class="hidden-xs hidden-sm"></th>
-			<th>Name and Role</th>
+			<th>Noms et Roles</th>
 			<th class="hidden-xs hidden-sm">E-Mail</th>
-			<th>Brand</th>
-			<th>Settings</th>
+			<th>Marque</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="user in users track by user._id">
+		<tr ng-repeat="user in users | orderBy: 'role'  | filter:searchFilter track by user._id">
 
 			<td class="user-image hidden-xs hidden-sm">
 				<a href="/settings">
@@ -95,9 +95,11 @@
 				{{user.brand}}
 			</td>
 			<td class="action-links">
-				<a href="" class="delete" ng-click="delete(user)">
-					<i class="linecons-trash"></i>
-					Delete
+				<a href="" class="btn btn-warning" ng-click="modify(user)">
+					<i class="fa fa-pencil"></i> Modifier
+				</a>
+				<a href="" class="btn btn-danger" ng-click="delete(user)">
+					<i class="fa fa-trash"></i>
 				</a>
 			</td>
 		</tr>
