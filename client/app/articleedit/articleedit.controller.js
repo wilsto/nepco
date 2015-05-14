@@ -16,7 +16,7 @@ angular.module('nepcoApp')
                     tags: $scope.article.EAN13,
                 },
                 function(error, result) {
-                    console.log(error, result);
+                    
                     $scope.loadPhotos();
                 });
 
@@ -49,7 +49,7 @@ angular.module('nepcoApp')
                 $scope.photos = [];
                 $http.get(url + "?" + Math.ceil(new Date().getTime() / 1000)).success(function(photos) {
                     $scope.photos = photos.resources;
-                    console.log('$scope.photos', $scope.photos);
+                    
                     if ($scope.photos.length > 0) {
                         $scope.article.photoLink = 'http://res.cloudinary.com/imguploadstorage/image/upload/c_fit,h_150,q_80/v1/' + $scope.photos[0].public_id + '.' + $scope.photos[0].format;
                     }
