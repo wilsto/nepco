@@ -83,7 +83,7 @@ angular.module('nepcoApp', [
 .controller('slideCtrl', function($scope, $rootScope, $http, Auth, $location) {
 
     $scope.currentUser = Auth.getCurrentUser();
-    console.log('$scope.currentUser', $scope.currentUser);
+    
 
     $scope.logout = function() {
         Auth.logout();
